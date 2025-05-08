@@ -1,0 +1,6 @@
+gradio-env
+
+.env
+.idea
+
+.ds_store
