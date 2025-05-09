@@ -1,9 +1,11 @@
 import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from langchain_core.globals import set_llm_cache
 from pydantic import BaseModel
 from backend.database.db_manager import DatabaseManager
 from backend.embedding.call_embedding import get_chat_completion
+from langchain_community.cache import SQLiteCache
 
 EMBEDDING_PROVIDER = "openai"
 app = FastAPI()
@@ -23,6 +25,12 @@ db_manager = DatabaseManager(
     embedding=EMBEDDING_PROVIDER
 )
 vector_db = db_manager.get_db()
+
+#SQLite Cache
+#This cache implementation uses a SQLite database to store responses, and will last across process restarts.
+set_llm_cache(SQLiteCache(database_path=".langchain.db"))
+
+
 @app.post("/ask")
 async def ask_question(query: ChatRequest):
     related_docs = vector_db.similarity_search(query.message, k=3)

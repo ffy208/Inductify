@@ -3,6 +3,7 @@ from openai import OpenAI
 from backend.llm.llm_manager import get_api_key
 
 
+
 def get_embedding(embedding:str, embedding_key:str=None, env_file:str=None):
     match embedding:
         case "openai":
