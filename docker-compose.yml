@@ -1,0 +1,31 @@
+version: "3.9"
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - OPENAI_API_KEY=your_openai_key
+    volumes:
+      - ./backend:/app
+      - ./.langchain.db:/app/.langchain.db
+
+  # frontend:
+  #   build: ./TSfrontend
+  #   ports:
+  #     - "3000:3000"
+  #   environment:
+  #     - NEXT_PUBLIC_API_URL=http://backend:8000
+  #   depends_on:
+  #     - backend
+
+  # gradio:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile.gradio
+  #   ports:
+  #     - "7860:7860"
+  #   depends_on:
+  #     - backend 
