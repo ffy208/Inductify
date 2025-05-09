@@ -1,12 +1,14 @@
 import os
 import tempfile
-
-from botocore import loaders
 from langchain_community.document_loaders import PyMuPDFLoader, UnstructuredExcelLoader, UnstructuredMarkdownLoader, \
     UnstructuredFileLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from embedding.call_embedding import get_embedding
-from langchain.vectorstores import Chroma
+from langchain_community.vectorstores import Chroma
+
+from dotenv import load_dotenv
+load_dotenv()
+
 
 
 DEFAULT_DB_PATH = "./input_db"
@@ -25,7 +27,8 @@ def file_loader(file, loaders):
     if isinstance(file, tempfile._TemporaryFileWrapper):
         file = file.name
     if not os.path.isfile(file):
-        [file_loader(os.path.join(file,f), loaders) for f in os.listdir(file)]
+        for f in os.listdir(file):
+            file_loader(os.path.join(file, f), loaders)
         return
     file_type = file.split('.')[-1]
     match file_type:
@@ -50,7 +53,7 @@ def create_vector_db(files=DEFAULT_DB_PATH, persist_dir = DEFAULT_PERSIST_PATH, 
         return "Please provide path to database"
     if type(files) != list:
         files = [files]
-    loader = []
+    loaders = []
     [file_loader(file, loaders) for file in files]
     docs = []
     for loader in loaders:
@@ -62,7 +65,7 @@ def create_vector_db(files=DEFAULT_DB_PATH, persist_dir = DEFAULT_PERSIST_PATH, 
     if type(embeddings) == str:
         embeddings = get_embedding(embedding=embeddings)
 
-    vector_db = Chroma.from_documents(documents=split_docs, embedding=embeddings, persist_dir=persist_dir)
+    vector_db = Chroma.from_documents(documents=split_docs, embedding=embeddings, persist_directory=persist_dir)
     vector_db.persist()
     return vector_db
 
