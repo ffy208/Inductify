@@ -1,12 +1,7 @@
-import unittest
-
 import sys
 import os
 
-# 添加父目录到 sys.path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-
-# 现在就可以导入 db_manager.py 里的函数了
 from database.db_manager import create_vector_db, get_vector_db
 
 

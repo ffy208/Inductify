@@ -1,5 +1,4 @@
 import os
-import openai
 
 from dotenv import find_dotenv
 from langchain_openai import ChatOpenAI
@@ -27,15 +26,3 @@ def get_llm(model:str=None, temperature:float=0.0, api_key:str=None):
         raise ValueError(f"Invalid model: {model}")
     return llm
 
-def get_chat_completion(prompt:str, model:str, temperature: float, api_key:str, max_tokens:int):
-    if api_key is None:
-        api_key = get_api_key("openai")
-    openai.api_key = api_key
-    messages = [{"role": "user", "content": prompt}]
-    response = openai.ChatCompletion.create(
-        model=model,
-        message=messages,
-        temperature=temperature,
-        max_tokens=max_tokens,
-    )
-    return response.choices[0].message["content"]
