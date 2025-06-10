@@ -5,6 +5,7 @@ from langchain_community.document_loaders import PyMuPDFLoader, UnstructuredExce
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_chroma import Chroma
 from dotenv import load_dotenv
+
 from backend.embedding.call_embedding import get_embedding
 
 load_dotenv()

@@ -3,9 +3,10 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from langchain_core.globals import set_llm_cache
 from pydantic import BaseModel
-from database.db_manager import DatabaseManager
-from embedding.call_embedding import get_chat_completion
 from langchain_community.cache import SQLiteCache
+
+from backend.database.db_manager import DatabaseManager
+from backend.embedding.call_embedding import get_chat_completion
 
 EMBEDDING_PROVIDER = "openai"
 app = FastAPI()
