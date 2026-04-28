@@ -1,0 +1,34 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pip install *)",
+      "Bash(python tools/generate_docs.py --count 50 --formats txt md --dry-run)",
+      "Bash(python3 -m pip install fpdf2 openpyxl faker typer tqdm -q --break-system-packages)",
+      "Bash(backend/gradio-env/bin/pip install *)",
+      "Bash(python3 -m venv /Users/frank/Code/Inductify/.venv)",
+      "Bash(/Users/frank/Code/Inductify/.venv/bin/pip install *)",
+      "Bash(.venv/bin/python tools/generate_docs.py --count 50 --formats txt md --dry-run)",
+      "Bash(.venv/bin/python tools/generate_docs.py --count 50 --formats \"txt,md\" --dry-run)",
+      "Bash(.venv/bin/python tools/generate_docs.py --count 50 --formats \"txt,md\" --out data/synthetic_docs --qa data/eval_qa.json)",
+      "Bash(.venv/bin/python tools/generate_docs.py --count 20 --formats \"pdf,xlsx\" --out data/synthetic_docs --qa data/eval_qa_pdf.json)",
+      "Bash(.venv/bin/python tools/generate_docs.py --count 10000 --out data/synthetic_docs --qa data/eval_qa.json --seed 42)",
+      "Bash(.venv/bin/python rag_eval_builder/generate_docs.py --count 100 --formats \"txt,md\" --dry-run)",
+      "Bash(.venv/bin/python rag_eval_builder/generate_docs.py --count 200 --formats \"txt,md\" --seed 42)",
+      "Bash(python3 -c ' *)",
+      "Bash(.venv/bin/python rag_eval_builder/generate_docs.py --count 10000 --seed 42)",
+      "Bash(python -c ' *)",
+      "Bash(pip show *)",
+      "Bash(bin/python --version)",
+      "Bash(lib/python*/site-packages/dotenv)",
+      "Bash(.venv/bin/python --version)",
+      "Bash(.venv/bin/python -c \"import dotenv; print\\('dotenv ok'\\)\")",
+      "Bash(.venv/bin/python -c \"import langchain; print\\('langchain ok'\\)\")",
+      "Bash(.venv/bin/python -c \"import langchain_openai; print\\('langchain_openai ok'\\)\")",
+      "Bash(.venv/bin/python -c \"import dotenv; print\\('ok'\\)\")",
+      "Bash(.venv/bin/python -c ' *)",
+      "Bash(PYTHONPATH=. OPENAI_API_KEY=dummy .venv/bin/python -c \"import langchain; print\\(langchain.__version__\\)\")",
+      "Bash(PYTHONPATH=/Users/frank/Code/Inductify .venv/bin/python -c \"import sentence_transformers; print\\('sentence-transformers:', sentence_transformers.__version__\\)\")",
+      "Bash(PYTHONPATH=/Users/frank/Code/Inductify .venv/bin/python -c \"from sentence_transformers import CrossEncoder; print\\('CrossEncoder: OK'\\)\")"
+    ]
+  }
+}

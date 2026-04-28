@@ -1,10 +1,14 @@
 gradio-env
+.venv
 
 .env
 .idea
 
 .ds_store
 
+# Generated synthetic corpus (large, reproducible via tools/generate_docs.py)
+data/synthetic_docs/
+data/eval_qa*.json
 
 #
 TSfrontend

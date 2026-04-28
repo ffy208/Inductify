@@ -1,13 +1,12 @@
 import os
 
-from dotenv import find_dotenv
+from dotenv import find_dotenv, load_dotenv
 from langchain_openai import ChatOpenAI
-from pipenv.utils.environment import load_dot_env
 
 
-def get_api_key(provider:str, env_file:dict()=None):
+def get_api_key(provider: str, env_file: dict | None = None) -> str:
     if env_file is None:
-        load_dot_env(find_dotenv())
+        load_dotenv(find_dotenv())
         env_file = os.environ
     match provider:
         case "openai":
@@ -19,7 +18,7 @@ def get_api_key(provider:str, env_file:dict()=None):
 def get_llm(model:str=None, temperature:float=0.0, api_key:str=None):
     if model in ["gpt-4.1", "gpt-4.1-mini", "gpt-4.1-nano", "gpt-4o", "gpt-4o-mini"]:
         if api_key is None:
-            api_key = get_api_key(model, os.environ)
+            api_key = get_api_key("openai", os.environ)
         llm = ChatOpenAI(model_name = model, temperature = temperature , openai_api_key = api_key)
     #TODO: add more!
     else:
