@@ -93,9 +93,34 @@ class DatabaseManager:
     def get_db(self):
         return self.vector_db
 
-    def update_db(self, new_files):
-        # TODO: Add logic for incremental updates
-        raise NotImplementedError("Update logic not implemented yet.")
+    def update_db(self, new_files: list[str]) -> int:
+        """
+        Incrementally index *new_files* into the existing vector store.
+
+        Loads, chunks, and upserts each file without rebuilding the whole DB.
+        Returns the number of chunks added.
+        """
+        loaders: list = []
+        for fp in new_files:
+            self._load_file(fp, loaders)
+
+        docs = []
+        for loader in loaders:
+            if loader:
+                docs.extend(loader.load())
+
+        if not docs:
+            return 0
+
+        splitter = RecursiveCharacterTextSplitter(
+            chunk_size=CHUNK_SIZE, chunk_overlap=CHUNK_OVERLAP
+        )
+        chunks = splitter.split_documents(docs)
+
+        if chunks:
+            self.vector_db.add_documents(chunks)
+
+        return len(chunks)
 
 if __name__ == '__main__':
     manager = DatabaseManager()

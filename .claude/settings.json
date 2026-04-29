@@ -28,7 +28,14 @@
       "Bash(.venv/bin/python -c ' *)",
       "Bash(PYTHONPATH=. OPENAI_API_KEY=dummy .venv/bin/python -c \"import langchain; print\\(langchain.__version__\\)\")",
       "Bash(PYTHONPATH=/Users/frank/Code/Inductify .venv/bin/python -c \"import sentence_transformers; print\\('sentence-transformers:', sentence_transformers.__version__\\)\")",
-      "Bash(PYTHONPATH=/Users/frank/Code/Inductify .venv/bin/python -c \"from sentence_transformers import CrossEncoder; print\\('CrossEncoder: OK'\\)\")"
+      "Bash(PYTHONPATH=/Users/frank/Code/Inductify .venv/bin/python -c \"from sentence_transformers import CrossEncoder; print\\('CrossEncoder: OK'\\)\")",
+      "Bash(npx next *)",
+      "Bash(node_modules/.bin/next build *)",
+      "Bash(NEXT_PUBLIC_API_URL=http://localhost:8000 node_modules/.bin/next dev --turbopack --port 3000)",
+      "Bash(curl -s http://localhost:3000)"
+    ],
+    "additionalDirectories": [
+      "/Users/frank/Code/Inductify/TSfrontend"
     ]
   }
 }
