@@ -27,15 +27,3 @@ services:
     depends_on:
       backend:
         condition: service_healthy
-
-  gradio:
-    build:
-      context: .
-      dockerfile: Dockerfile.gradio
-    ports:
-      - "7860:7860"
-    environment:
-      - BACKEND_URL=http://backend:8000
-    depends_on:
-      backend:
-        condition: service_healthy

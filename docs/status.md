@@ -33,7 +33,6 @@
 | Document upload UI | ✅ Done — paperclip → upload → index → status chip |
 | Loading / error states | ✅ Done |
 | Session management (New Chat) | ✅ Done — clears backend history |
-| Gradio demo (`app.py`) | Partial — static, no citations shown |
 
 ## Infrastructure
 
@@ -41,7 +40,6 @@
 |------|--------|
 | Backend Docker | ✅ Done — health check added |
 | Frontend Docker | ✅ Done — `depends_on: backend healthy` |
-| Gradio Docker | ✅ Done — `BACKEND_URL` env var |
 | `.env.example` | ✅ Done |
 
 ## Evaluation
