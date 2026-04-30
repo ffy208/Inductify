@@ -54,7 +54,11 @@
       "Bash(.venv/bin/python -c \"from slowapi import Limiter; from slowapi.util import get_remote_address; print\\('slowapi OK'\\)\")",
       "Bash(git add *)",
       "Bash(git commit -m ' *)",
-      "Bash(git commit *)"
+      "Bash(git commit *)",
+      "Bash(sed -n '83,92p' /Users/frank/Code/Inductify/backend/llm/langchain_chain.py)",
+      "Bash(sed -n '88,98p' /Users/frank/Code/Inductify/backend/llm/agent.py)",
+      "Bash(git rm *)",
+      "Bash(git mv *)"
     ],
     "additionalDirectories": [
       "/Users/frank/Code/Inductify/TSfrontend"

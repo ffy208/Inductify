@@ -17,6 +17,7 @@ __pycache__/
 # Node / Next.js
 frontend/.next/
 frontend/node_modules/
+frontend/package-lock.json
 
 # Data (large / reproducible)
 data/synthetic_docs/
