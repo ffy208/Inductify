@@ -15,7 +15,7 @@ A smart onboarding assistant that helps new hires quickly access essential knowl
 ```
 Inductify/
   backend/         # Python backend (FastAPI, DB, LLM, Embedding)
-  TSfrontend/      # TypeScript frontend (Next.js, React) | Under construction👷
+  frontend/      # TypeScript frontend (Next.js, React) | Under construction👷
   app.py           # Frontend entry (Gradio)
 ```
 

@@ -27,7 +27,7 @@
 
 | Module | Status |
 |--------|--------|
-| Next.js ↔ backend integration | ✅ Done — `TSfrontend/lib/api.ts` |
+| Next.js ↔ backend integration | ✅ Done — `frontend/lib/api.ts` |
 | Live chat with real API calls | ✅ Done — `app.tsx` rewritten |
 | Source citation cards | ✅ Done — expandable, shows score |
 | Document upload UI | ✅ Done — paperclip → upload → index → status chip |

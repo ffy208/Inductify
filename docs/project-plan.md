@@ -51,7 +51,7 @@
 - Modify `similarity_search` to return `Document` metadata alongside answer
 - Update Gradio + Next.js frontend to display source cards
 
-**Files:** `backend/main.py`, `TSfrontend/components/messaging-chat-message.tsx`
+**Files:** `backend/main.py`, `frontend/components/messaging-chat-message.tsx`
 
 ---
 
@@ -125,9 +125,9 @@
 - Uncomment `frontend` and `gradio` services in `docker-compose.yml`
 - Add health-check for backend before frontend starts
 - Add `.env.example` with required vars (`OPENAI_API_KEY`, `NEXT_PUBLIC_API_URL`)
-- Verify `Dockerfile.gradio` and `TSfrontend/Dockerfile`
+- Verify `Dockerfile.gradio` and `frontend/Dockerfile`
 
-**Files:** `docker-compose.yml`, `Dockerfile.gradio`, `TSfrontend/Dockerfile`
+**Files:** `docker-compose.yml`, `Dockerfile.gradio`, `frontend/Dockerfile`
 
 ---
 
@@ -141,7 +141,7 @@
 - Display source citations below each AI message
 - Upload button triggers `POST /upload` + `POST /index`
 
-**Files:** `TSfrontend/lib/api.ts` (new), `TSfrontend/components/app.tsx`, `TSfrontend/components/prompt-input-with-enclosed-actions.tsx`
+**Files:** `frontend/lib/api.ts` (new), `frontend/components/app.tsx`, `frontend/components/prompt-input-with-enclosed-actions.tsx`
 
 ---
 
