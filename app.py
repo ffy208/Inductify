@@ -1,4 +1,5 @@
 # Quick Demo Frontend
+import os
 import uuid
 import gradio as gr
 import requests
@@ -10,7 +11,8 @@ def ask(message, history):
         "session_id": session_id,
         "message": message
     }
-    r = requests.post("http://127.0.0.1:8000/ask", json=payload)
+    backend = os.getenv("BACKEND_URL", "http://127.0.0.1:8000")
+    r = requests.post(f"{backend}/ask", json=payload)
     print("Raw response from backend:", r.text)
     return r.json().get("answer","Error")
 

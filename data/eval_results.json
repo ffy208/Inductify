@@ -1,0 +1,1640 @@
+{
+  "model": "gpt-4.1-mini",
+  "n_questions": 54,
+  "conditions": [
+    {
+      "name": "RAG, no re-rank (k=3)",
+      "accuracy": 0.8333,
+      "avg_latency_s": 1.066,
+      "pass": 45,
+      "total": 54,
+      "by_category": {
+        "ben": {
+          "accuracy": 0.833,
+          "n": 6,
+          "correct": 5
+        },
+        "coc": {
+          "accuracy": 1.0,
+          "n": 5,
+          "correct": 5
+        },
+        "exp": {
+          "accuracy": 0.8,
+          "n": 5,
+          "correct": 4
+        },
+        "it": {
+          "accuracy": 0.5,
+          "n": 6,
+          "correct": 3
+        },
+        "ob": {
+          "accuracy": 1.0,
+          "n": 5,
+          "correct": 5
+        },
+        "prf": {
+          "accuracy": 0.833,
+          "n": 6,
+          "correct": 5
+        },
+        "pro": {
+          "accuracy": 0.8,
+          "n": 5,
+          "correct": 4
+        },
+        "rw": {
+          "accuracy": 0.833,
+          "n": 6,
+          "correct": 5
+        },
+        "trn": {
+          "accuracy": 1.0,
+          "n": 5,
+          "correct": 5
+        },
+        "vac": {
+          "accuracy": 0.8,
+          "n": 5,
+          "correct": 4
+        }
+      },
+      "results": [
+        {
+          "question": "What is the quarterly expense reimbursement limit at Rodriguez, Figueroa and Sanchez?",
+          "expected": "$959",
+          "predicted": "Employees may submit expense claims up to $959 per calendar quarter.",
+          "correct": true,
+          "latency_s": 1.561,
+          "fact_key": "exp_limit_quarterly",
+          "category": "exp",
+          "sources": [
+            "p_001410.txt",
+            "p_004766.txt",
+            "p_001333.txt"
+          ]
+        },
+        {
+          "question": "What form must employees use to submit expenses at Rodriguez, Figueroa and Sanchez?",
+          "expected": "NHR-1409",
+          "predicted": "Employees must use form NHR-1409 to submit expenses at Rodriguez, Figueroa and Sanchez.",
+          "correct": true,
+          "latency_s": 3.02,
+          "fact_key": "exp_form_code",
+          "category": "exp",
+          "sources": [
+            "p_001399.md",
+            "p_003648.md",
+            "p_004283.md"
+          ]
+        },
+        {
+          "question": "Within how many days must an expense report be submitted at Rodriguez, Figueroa and Sanchez?",
+          "expected": "25 days",
+          "predicted": "An expense report must be submitted no later than 25 days after the purchase date at Rodriguez, Figueroa and Sanchez.",
+          "correct": true,
+          "latency_s": 1.551,
+          "fact_key": "exp_submission_days",
+          "category": "exp",
+          "sources": [
+            "p_002310.txt",
+            "p_002512.txt",
+            "p_003977.txt"
+          ]
+        },
+        {
+          "question": "What is the single-receipt pre-approval threshold at Rodriguez, Figueroa and Sanchez?",
+          "expected": "$135",
+          "predicted": "I don't know.",
+          "correct": false,
+          "latency_s": 0.924,
+          "fact_key": "exp_single_receipt_threshold",
+          "category": "exp",
+          "sources": [
+            "p_003562.md",
+            "p_002787.md",
+            "p_002810.md"
+          ]
+        },
+        {
+          "question": "What is the expense policy ID at Rodriguez, Figueroa and Sanchez?",
+          "expected": "EXP-2824",
+          "predicted": "The expense policy ID at Rodriguez, Figueroa and Sanchez is EXP-2824.",
+          "correct": true,
+          "latency_s": 1.166,
+          "fact_key": "exp_policy_id",
+          "category": "exp",
+          "sources": [
+            "p_003538.md",
+            "p_004885.md",
+            "p_002832.md"
+          ]
+        },
+        {
+          "question": "How often must passwords be rotated at Rodriguez, Figueroa and Sanchez?",
+          "expected": "43 days",
+          "predicted": "Passwords must be rotated every 43 days using the SSO portal.",
+          "correct": true,
+          "latency_s": 1.48,
+          "fact_key": "it_password_days",
+          "category": "it",
+          "sources": [
+            "p_004999.md",
+            "p_004828.md",
+            "p_000918.md"
+          ]
+        },
+        {
+          "question": "What is the workstation session timeout at Rodriguez, Figueroa and Sanchez?",
+          "expected": "60 minutes",
+          "predicted": "The workstation session timeout at Rodriguez, Figueroa and Sanchez is 60 minutes.",
+          "correct": true,
+          "latency_s": 0.814,
+          "fact_key": "it_session_timeout_min",
+          "category": "it",
+          "sources": [
+            "p_004999.md",
+            "p_004828.md",
+            "p_003713.md"
+          ]
+        },
+        {
+          "question": "What VPN profile ID is required at Rodriguez, Figueroa and Sanchez?",
+          "expected": "VPN-2424",
+          "predicted": "VPN-2424",
+          "correct": true,
+          "latency_s": 0.629,
+          "fact_key": "it_vpn_id",
+          "category": "it",
+          "sources": [
+            "p_004828.md",
+            "p_001931.md",
+            "p_004049.md"
+          ]
+        },
+        {
+          "question": "Within how many hours must security incidents be reported at Rodriguez, Figueroa and Sanchez?",
+          "expected": "19 hours",
+          "predicted": "I don't know.",
+          "correct": false,
+          "latency_s": 0.791,
+          "fact_key": "it_incident_hours",
+          "category": "it",
+          "sources": [
+            "p_005477.md",
+            "p_001453.md",
+            "p_004865.md"
+          ]
+        },
+        {
+          "question": "What is the Security Hotline extension at Rodriguez, Figueroa and Sanchez?",
+          "expected": "7912",
+          "predicted": "I don't know",
+          "correct": false,
+          "latency_s": 0.917,
+          "fact_key": "it_hotline_ext",
+          "category": "it",
+          "sources": [
+            "p_003928.md",
+            "p_001531.md",
+            "p_004818.md"
+          ]
+        },
+        {
+          "question": "How many days do new employees have to enrol in MFA at Rodriguez, Figueroa and Sanchez?",
+          "expected": "1 days",
+          "predicted": "I don't know.",
+          "correct": false,
+          "latency_s": 0.969,
+          "fact_key": "it_mfa_grace_days",
+          "category": "it",
+          "sources": [
+            "p_003320.md",
+            "p_000931.md",
+            "p_001347.md"
+          ]
+        },
+        {
+          "question": "What is the probation period for new hires at Rodriguez, Figueroa and Sanchez?",
+          "expected": "60 days",
+          "predicted": "60 calendar days from your start date.",
+          "correct": true,
+          "latency_s": 1.102,
+          "fact_key": "ob_probation_days",
+          "category": "ob",
+          "sources": [
+            "p_004988.md",
+            "p_003320.md",
+            "p_001347.md"
+          ]
+        },
+        {
+          "question": "What form must new hires submit before starting at Rodriguez, Figueroa and Sanchez?",
+          "expected": "NHR-2535",
+          "predicted": "New hires must submit form NHR-2535 at least 3 business days before their start date.",
+          "correct": true,
+          "latency_s": 0.753,
+          "fact_key": "ob_form_code",
+          "category": "ob",
+          "sources": [
+            "p_004509.md",
+            "p_004583.md",
+            "p_000059.md"
+          ]
+        },
+        {
+          "question": "Within how many days will a new hire's buddy be assigned at Rodriguez, Figueroa and Sanchez?",
+          "expected": "9 days",
+          "predicted": "Within 9 business days.",
+          "correct": true,
+          "latency_s": 0.75,
+          "fact_key": "ob_buddy_days",
+          "category": "ob",
+          "sources": [
+            "p_003320.md",
+            "p_000931.md",
+            "p_001347.md"
+          ]
+        },
+        {
+          "question": "How many hours is the mandatory orientation at Rodriguez, Figueroa and Sanchez?",
+          "expected": "11 hours",
+          "predicted": "11 hours",
+          "correct": true,
+          "latency_s": 0.857,
+          "fact_key": "ob_orientation_hours",
+          "category": "ob",
+          "sources": [
+            "p_003320.md",
+            "p_000931.md",
+            "p_001347.md"
+          ]
+        },
+        {
+          "question": "What is the onboarding checklist ID at Rodriguez, Figueroa and Sanchez?",
+          "expected": "OBD-1488",
+          "predicted": "The onboarding checklist ID at Rodriguez, Figueroa and Sanchez is OBD-1488.",
+          "correct": true,
+          "latency_s": 1.058,
+          "fact_key": "ob_checklist_id",
+          "category": "ob",
+          "sources": [
+            "p_001450.txt",
+            "p_002806.txt",
+            "p_001871.txt"
+          ]
+        },
+        {
+          "question": "What is the annual health insurance deductible at Rodriguez, Figueroa and Sanchez?",
+          "expected": "$2750",
+          "predicted": "$2750 per year.",
+          "correct": true,
+          "latency_s": 0.657,
+          "fact_key": "ben_health_deductible",
+          "category": "ben",
+          "sources": [
+            "p_001331.md",
+            "p_002055.md",
+            "p_004774.md"
+          ]
+        },
+        {
+          "question": "What is the annual HSA limit at Rodriguez, Figueroa and Sanchez?",
+          "expected": "$3050",
+          "predicted": "Up to $3050 annually (employer contribution limit).",
+          "correct": true,
+          "latency_s": 1.057,
+          "fact_key": "ben_hsa_limit",
+          "category": "ben",
+          "sources": [
+            "p_005388.md",
+            "p_000611.md",
+            "p_003083.md"
+          ]
+        },
+        {
+          "question": "What percentage of dental procedures are covered at Rodriguez, Figueroa and Sanchez?",
+          "expected": "84%",
+          "predicted": "84% of eligible procedures after the deductible.",
+          "correct": true,
+          "latency_s": 0.741,
+          "fact_key": "ben_dental_pct",
+          "category": "ben",
+          "sources": [
+            "p_004774.md",
+            "p_001335.md",
+            "p_001331.md"
+          ]
+        },
+        {
+          "question": "What is the annual vision allowance at Rodriguez, Figueroa and Sanchez?",
+          "expected": "$230",
+          "predicted": "The annual vision allowance at Rodriguez, Figueroa and Sanchez is $230 per year.",
+          "correct": true,
+          "latency_s": 0.783,
+          "fact_key": "ben_vision_allowance",
+          "category": "ben",
+          "sources": [
+            "p_005211.txt",
+            "p_005309.txt",
+            "p_005314.txt"
+          ]
+        },
+        {
+          "question": "How many PTO hours do employees accrue per month at Rodriguez, Figueroa and Sanchez?",
+          "expected": "8 hours per month",
+          "predicted": "I don't know.",
+          "correct": false,
+          "latency_s": 1.891,
+          "fact_key": "ben_pto_hours_per_month",
+          "category": "ben",
+          "sources": [
+            "p_003934.md",
+            "p_005158.md",
+            "p_005334.md"
+          ]
+        },
+        {
+          "question": "Within how many days must new employees enrol in benefits at Rodriguez, Figueroa and Sanchez?",
+          "expected": "42 days",
+          "predicted": "You have 42 days from your start date to enrol.",
+          "correct": true,
+          "latency_s": 0.589,
+          "fact_key": "ben_enrollment_days",
+          "category": "ben",
+          "sources": [
+            "p_001460.md",
+            "p_000543.md",
+            "p_003647.md"
+          ]
+        },
+        {
+          "question": "How many paid vacation days per year do employees receive at Rodriguez, Figueroa and Sanchez?",
+          "expected": "10 days",
+          "predicted": "Employees receive up to 10 paid vacation days per year.",
+          "correct": false,
+          "latency_s": 1.216,
+          "fact_key": "vac_max_days",
+          "category": "vac",
+          "sources": [
+            "p_005334.md",
+            "p_003934.md",
+            "p_005158.md"
+          ]
+        },
+        {
+          "question": "How many vacation days can be carried over at Rodriguez, Figueroa and Sanchez?",
+          "expected": "5 days",
+          "predicted": "Up to 5 days.",
+          "correct": true,
+          "latency_s": 6.32,
+          "fact_key": "vac_carryover_days",
+          "category": "vac",
+          "sources": [
+            "p_002779.md",
+            "p_002726.md",
+            "p_003324.md"
+          ]
+        },
+        {
+          "question": "How many days in advance must vacation requests be submitted at Rodriguez, Figueroa and Sanchez?",
+          "expected": "25 days",
+          "predicted": "Vacation requests must be submitted at least 25 days in advance at Rodriguez, Figueroa and Sanchez.",
+          "correct": true,
+          "latency_s": 0.923,
+          "fact_key": "vac_advance_days",
+          "category": "vac",
+          "sources": [
+            "p_005430.txt",
+            "p_001454.txt",
+            "p_002846.txt"
+          ]
+        },
+        {
+          "question": "At what percentage is unused vacation paid out upon separation at Rodriguez, Figueroa and Sanchez?",
+          "expected": "54%",
+          "predicted": "It is paid out at 54% of your daily rate.",
+          "correct": true,
+          "latency_s": 0.86,
+          "fact_key": "vac_payout_pct",
+          "category": "vac",
+          "sources": [
+            "p_002726.md",
+            "p_003065.md",
+            "p_004571.md"
+          ]
+        },
+        {
+          "question": "What form is used to request vacation at Rodriguez, Figueroa and Sanchez?",
+          "expected": "VAC-6574",
+          "predicted": "Form VAC-6574 is used to request vacation at Rodriguez, Figueroa and Sanchez.",
+          "correct": true,
+          "latency_s": 0.794,
+          "fact_key": "vac_form",
+          "category": "vac",
+          "sources": [
+            "p_003188.md",
+            "p_005039.md",
+            "p_005100.md"
+          ]
+        },
+        {
+          "question": "What form is used to report a code of conduct violation at Rodriguez, Figueroa and Sanchez?",
+          "expected": "ETH-3547",
+          "predicted": "Use form ETH-3547.",
+          "correct": true,
+          "latency_s": 0.979,
+          "fact_key": "coc_report_form",
+          "category": "coc",
+          "sources": [
+            "p_001394.md",
+            "p_004909.md",
+            "p_001740.md"
+          ]
+        },
+        {
+          "question": "What is the ethics hotline extension at Rodriguez, Figueroa and Sanchez?",
+          "expected": "4527",
+          "predicted": "The ethics hotline extension at Rodriguez, Figueroa and Sanchez is 4527.",
+          "correct": true,
+          "latency_s": 1.077,
+          "fact_key": "coc_hotline_ext",
+          "category": "coc",
+          "sources": [
+            "p_003928.md",
+            "p_001053.md",
+            "p_003064.md"
+          ]
+        },
+        {
+          "question": "Within how many days does an investigation begin at Rodriguez, Figueroa and Sanchez?",
+          "expected": "58 days",
+          "predicted": "An investigation begins within 58 days at Rodriguez, Figueroa and Sanchez.",
+          "correct": true,
+          "latency_s": 0.951,
+          "fact_key": "coc_investigation_days",
+          "category": "coc",
+          "sources": [
+            "p_003928.md",
+            "p_004568.md",
+            "p_001173.md"
+          ]
+        },
+        {
+          "question": "How often is the code of conduct reviewed at Rodriguez, Figueroa and Sanchez?",
+          "expected": "6 months",
+          "predicted": "Every 6 months.",
+          "correct": true,
+          "latency_s": 0.68,
+          "fact_key": "coc_review_months",
+          "category": "coc",
+          "sources": [
+            "p_002724.md",
+            "p_001498.md",
+            "p_002926.md"
+          ]
+        },
+        {
+          "question": "Who is the compliance officer at Rodriguez, Figueroa and Sanchez?",
+          "expected": "Kevin Pacheco",
+          "predicted": "The compliance officer at Rodriguez, Figueroa and Sanchez is Kevin Pacheco.",
+          "correct": true,
+          "latency_s": 0.639,
+          "fact_key": "coc_compliance_officer",
+          "category": "coc",
+          "sources": [
+            "p_002747.md",
+            "p_005477.md",
+            "p_004865.md"
+          ]
+        },
+        {
+          "question": "How often are performance reviews held at Rodriguez, Figueroa and Sanchez?",
+          "expected": "12 months",
+          "predicted": "Performance reviews at Rodriguez, Figueroa and Sanchez are held every 12 months.",
+          "correct": true,
+          "latency_s": 0.969,
+          "fact_key": "prf_review_months",
+          "category": "prf",
+          "sources": [
+            "p_002774.md",
+            "p_005013.md",
+            "p_003342.md"
+          ]
+        },
+        {
+          "question": "What is the maximum performance rating at Rodriguez, Figueroa and Sanchez?",
+          "expected": "4",
+          "predicted": "The maximum performance rating at Rodriguez, Figueroa and Sanchez is 4 on a 4-point scale.",
+          "correct": true,
+          "latency_s": 1.217,
+          "fact_key": "prf_rating_max",
+          "category": "prf",
+          "sources": [
+            "p_004808.md",
+            "p_001108.md",
+            "p_003771.md"
+          ]
+        },
+        {
+          "question": "What is the bonus target percentage at Rodriguez, Figueroa and Sanchez?",
+          "expected": "16%",
+          "predicted": "The bonus target percentage at Rodriguez, Figueroa and Sanchez is up to 16% of base salary.",
+          "correct": true,
+          "latency_s": 0.94,
+          "fact_key": "prf_bonus_pct",
+          "category": "prf",
+          "sources": [
+            "p_004808.md",
+            "p_004197.md",
+            "p_005205.md"
+          ]
+        },
+        {
+          "question": "How many OKRs are employees expected to maintain at Rodriguez, Figueroa and Sanchez?",
+          "expected": "5",
+          "predicted": "Employees are expected to maintain 5 active OKRs at Rodriguez, Figueroa and Sanchez.",
+          "correct": true,
+          "latency_s": 0.766,
+          "fact_key": "prf_okr_quota",
+          "category": "prf",
+          "sources": [
+            "p_004808.md",
+            "p_002774.md",
+            "p_005013.md"
+          ]
+        },
+        {
+          "question": "How many days before a review must the self-review be submitted at Rodriguez, Figueroa and Sanchez?",
+          "expected": "13 days",
+          "predicted": "13 days",
+          "correct": true,
+          "latency_s": 0.737,
+          "fact_key": "prf_self_review_days",
+          "category": "prf",
+          "sources": [
+            "p_004702.md",
+            "p_000006.md",
+            "p_003330.md"
+          ]
+        },
+        {
+          "question": "What form is used for performance calibration at Rodriguez, Figueroa and Sanchez?",
+          "expected": "CAL-1711",
+          "predicted": "I don't know",
+          "correct": false,
+          "latency_s": 0.744,
+          "fact_key": "prf_calibration_form",
+          "category": "prf",
+          "sources": [
+            "p_003342.md",
+            "p_001354.md",
+            "p_002774.md"
+          ]
+        },
+        {
+          "question": "Within how many days must the required training be completed at Rodriguez, Figueroa and Sanchez?",
+          "expected": "64 days",
+          "predicted": "All employees must complete course TRN-8527 within 64 days.",
+          "correct": true,
+          "latency_s": 0.954,
+          "fact_key": "trn_deadline_days",
+          "category": "trn",
+          "sources": [
+            "p_002811.md",
+            "p_002851.md",
+            "p_002870.md"
+          ]
+        },
+        {
+          "question": "What certification is awarded upon completing the required training at Rodriguez, Figueroa and Sanchez?",
+          "expected": "CERT-3045",
+          "predicted": "CERT-3045",
+          "correct": true,
+          "latency_s": 0.728,
+          "fact_key": "trn_cert_id",
+          "category": "trn",
+          "sources": [
+            "p_005010.md",
+            "p_001470.md",
+            "p_002886.md"
+          ]
+        },
+        {
+          "question": "What passing score is required for the training exam at Rodriguez, Figueroa and Sanchez?",
+          "expected": "82%",
+          "predicted": "A passing score of 82% or higher is required.",
+          "correct": true,
+          "latency_s": 0.711,
+          "fact_key": "trn_passing_score",
+          "category": "trn",
+          "sources": [
+            "p_002811.md",
+            "p_002851.md",
+            "p_002870.md"
+          ]
+        },
+        {
+          "question": "How many days must employees wait before retaking the training exam at Rodriguez, Figueroa and Sanchez?",
+          "expected": "5 days",
+          "predicted": "5 days",
+          "correct": true,
+          "latency_s": 0.556,
+          "fact_key": "trn_retake_days",
+          "category": "trn",
+          "sources": [
+            "p_002811.md",
+            "p_002851.md",
+            "p_002870.md"
+          ]
+        },
+        {
+          "question": "What is the LMS access code for required training at Rodriguez, Figueroa and Sanchez?",
+          "expected": "LMS-6925",
+          "predicted": "LMS-6925",
+          "correct": true,
+          "latency_s": 1.045,
+          "fact_key": "trn_lms_code",
+          "category": "trn",
+          "sources": [
+            "p_002738.md",
+            "p_004908.md",
+            "p_002769.md"
+          ]
+        },
+        {
+          "question": "What is the purchase order threshold at Rodriguez, Figueroa and Sanchez?",
+          "expected": "$5000",
+          "predicted": "The purchase order threshold at Rodriguez, Figueroa and Sanchez is $5000.",
+          "correct": true,
+          "latency_s": 1.345,
+          "fact_key": "pro_po_threshold",
+          "category": "pro",
+          "sources": [
+            "p_003891.md",
+            "p_005152.md",
+            "p_005218.md"
+          ]
+        },
+        {
+          "question": "How many days does vendor approval take at Rodriguez, Figueroa and Sanchez?",
+          "expected": "7 days",
+          "predicted": "Vendor approval takes up to 7 business days at Rodriguez, Figueroa and Sanchez.",
+          "correct": true,
+          "latency_s": 0.775,
+          "fact_key": "pro_vendor_days",
+          "category": "pro",
+          "sources": [
+            "p_000986.md",
+            "p_004591.md",
+            "p_005252.md"
+          ]
+        },
+        {
+          "question": "How many days does contract legal review take at Rodriguez, Figueroa and Sanchez?",
+          "expected": "4 days",
+          "predicted": "I don't know",
+          "correct": false,
+          "latency_s": 0.663,
+          "fact_key": "pro_contract_days",
+          "category": "pro",
+          "sources": [
+            "p_002180.txt",
+            "p_003347.txt",
+            "p_003530.txt"
+          ]
+        },
+        {
+          "question": "What approval code is required for purchase orders at Rodriguez, Figueroa and Sanchez?",
+          "expected": "APR-4733",
+          "predicted": "The approval code required for purchase orders at Rodriguez, Figueroa and Sanchez is APR-4733.",
+          "correct": true,
+          "latency_s": 0.992,
+          "fact_key": "pro_approval_code",
+          "category": "pro",
+          "sources": [
+            "p_004924.md",
+            "p_003562.md",
+            "p_002810.md"
+          ]
+        },
+        {
+          "question": "What is the emergency purchase limit (no PO required) at Rodriguez, Figueroa and Sanchez?",
+          "expected": "$650",
+          "predicted": "The emergency purchase limit (no PO required) at Rodriguez, Figueroa and Sanchez is $650.",
+          "correct": true,
+          "latency_s": 0.99,
+          "fact_key": "pro_emergency_limit",
+          "category": "pro",
+          "sources": [
+            "p_002799.md",
+            "p_001424.md",
+            "p_004381.md"
+          ]
+        },
+        {
+          "question": "How many days per week can employees work remotely at Rodriguez, Figueroa and Sanchez?",
+          "expected": "2 days per week",
+          "predicted": "Up to 2 days per week.",
+          "correct": true,
+          "latency_s": 0.578,
+          "fact_key": "rw_days_per_week",
+          "category": "rw",
+          "sources": [
+            "p_003544.md",
+            "p_001362.md",
+            "p_004860.md"
+          ]
+        },
+        {
+          "question": "What is the one-time equipment allowance for remote workers at Rodriguez, Figueroa and Sanchez?",
+          "expected": "$350",
+          "predicted": "A one-time allowance of $350.",
+          "correct": true,
+          "latency_s": 1.677,
+          "fact_key": "rw_equipment_allowance",
+          "category": "rw",
+          "sources": [
+            "p_003558.md",
+            "p_004860.md",
+            "p_001362.md"
+          ]
+        },
+        {
+          "question": "What is the monthly remote work stipend at Rodriguez, Figueroa and Sanchez?",
+          "expected": "$150",
+          "predicted": "$150 per month.",
+          "correct": true,
+          "latency_s": 0.645,
+          "fact_key": "rw_monthly_stipend",
+          "category": "rw",
+          "sources": [
+            "p_003558.md",
+            "p_004860.md",
+            "p_003544.md"
+          ]
+        },
+        {
+          "question": "What VPN profile is required for remote work at Rodriguez, Figueroa and Sanchez?",
+          "expected": "VPN-5554",
+          "predicted": "Profile VPN-5554.",
+          "correct": true,
+          "latency_s": 0.727,
+          "fact_key": "rw_vpn_id",
+          "category": "rw",
+          "sources": [
+            "p_003558.md",
+            "p_004987.md",
+            "p_004860.md"
+          ]
+        },
+        {
+          "question": "What form must be submitted to request a remote work arrangement at Rodriguez, Figueroa and Sanchez?",
+          "expected": "RWF-6977",
+          "predicted": "Submit form RWF-6977 for manager approval.",
+          "correct": true,
+          "latency_s": 0.698,
+          "fact_key": "rw_request_form",
+          "category": "rw",
+          "sources": [
+            "p_003012.md",
+            "p_003794.md",
+            "p_004451.md"
+          ]
+        },
+        {
+          "question": "What are the core collaboration hours at Rodriguez, Figueroa and Sanchez?",
+          "expected": "9:00 AM",
+          "predicted": "I don't know.",
+          "correct": false,
+          "latency_s": 0.588,
+          "fact_key": "rw_core_start",
+          "category": "rw",
+          "sources": [
+            "p_004911.txt",
+            "p_001959.txt",
+            "p_004369.txt"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "RAG + re-rank (k=10→3)",
+      "accuracy": 0.8333,
+      "avg_latency_s": 0.996,
+      "pass": 45,
+      "total": 54,
+      "by_category": {
+        "ben": {
+          "accuracy": 0.833,
+          "n": 6,
+          "correct": 5
+        },
+        "coc": {
+          "accuracy": 1.0,
+          "n": 5,
+          "correct": 5
+        },
+        "exp": {
+          "accuracy": 0.8,
+          "n": 5,
+          "correct": 4
+        },
+        "it": {
+          "accuracy": 0.5,
+          "n": 6,
+          "correct": 3
+        },
+        "ob": {
+          "accuracy": 1.0,
+          "n": 5,
+          "correct": 5
+        },
+        "prf": {
+          "accuracy": 0.833,
+          "n": 6,
+          "correct": 5
+        },
+        "pro": {
+          "accuracy": 0.8,
+          "n": 5,
+          "correct": 4
+        },
+        "rw": {
+          "accuracy": 0.833,
+          "n": 6,
+          "correct": 5
+        },
+        "trn": {
+          "accuracy": 1.0,
+          "n": 5,
+          "correct": 5
+        },
+        "vac": {
+          "accuracy": 0.8,
+          "n": 5,
+          "correct": 4
+        }
+      },
+      "results": [
+        {
+          "question": "What is the quarterly expense reimbursement limit at Rodriguez, Figueroa and Sanchez?",
+          "expected": "$959",
+          "predicted": "Employees may submit expense claims up to $959 per calendar quarter.",
+          "correct": true,
+          "latency_s": 1.616,
+          "fact_key": "exp_limit_quarterly",
+          "category": "exp",
+          "sources": [
+            "p_001410.txt",
+            "p_004766.txt",
+            "p_001333.txt"
+          ]
+        },
+        {
+          "question": "What form must employees use to submit expenses at Rodriguez, Figueroa and Sanchez?",
+          "expected": "NHR-1409",
+          "predicted": "Employees must use form NHR-1409 to submit expenses at Rodriguez, Figueroa and Sanchez.",
+          "correct": true,
+          "latency_s": 0.792,
+          "fact_key": "exp_form_code",
+          "category": "exp",
+          "sources": [
+            "p_001399.md",
+            "p_004144.md",
+            "p_000885.md"
+          ]
+        },
+        {
+          "question": "Within how many days must an expense report be submitted at Rodriguez, Figueroa and Sanchez?",
+          "expected": "25 days",
+          "predicted": "An expense report must be submitted no later than 25 days after the purchase date.",
+          "correct": true,
+          "latency_s": 0.896,
+          "fact_key": "exp_submission_days",
+          "category": "exp",
+          "sources": [
+            "p_001152.txt",
+            "p_001654.txt",
+            "p_001836.txt"
+          ]
+        },
+        {
+          "question": "What is the single-receipt pre-approval threshold at Rodriguez, Figueroa and Sanchez?",
+          "expected": "$135",
+          "predicted": "I don't know.",
+          "correct": false,
+          "latency_s": 0.959,
+          "fact_key": "exp_single_receipt_threshold",
+          "category": "exp",
+          "sources": [
+            "p_003562.md",
+            "p_002787.md",
+            "p_002810.md"
+          ]
+        },
+        {
+          "question": "What is the expense policy ID at Rodriguez, Figueroa and Sanchez?",
+          "expected": "EXP-2824",
+          "predicted": "The expense policy ID at Rodriguez, Figueroa and Sanchez is EXP-2824.",
+          "correct": true,
+          "latency_s": 0.838,
+          "fact_key": "exp_policy_id",
+          "category": "exp",
+          "sources": [
+            "p_003538.md",
+            "p_004885.md",
+            "p_002832.md"
+          ]
+        },
+        {
+          "question": "How often must passwords be rotated at Rodriguez, Figueroa and Sanchez?",
+          "expected": "43 days",
+          "predicted": "Passwords must be rotated every 43 days using the SSO portal.",
+          "correct": true,
+          "latency_s": 0.718,
+          "fact_key": "it_password_days",
+          "category": "it",
+          "sources": [
+            "p_004999.md",
+            "p_004828.md",
+            "p_000229.md"
+          ]
+        },
+        {
+          "question": "What is the workstation session timeout at Rodriguez, Figueroa and Sanchez?",
+          "expected": "60 minutes",
+          "predicted": "The workstation session timeout at Rodriguez, Figueroa and Sanchez is 60 minutes.",
+          "correct": true,
+          "latency_s": 1.218,
+          "fact_key": "it_session_timeout_min",
+          "category": "it",
+          "sources": [
+            "p_004999.md",
+            "p_004828.md",
+            "p_000083.md"
+          ]
+        },
+        {
+          "question": "What VPN profile ID is required at Rodriguez, Figueroa and Sanchez?",
+          "expected": "VPN-2424",
+          "predicted": "VPN-2424",
+          "correct": true,
+          "latency_s": 0.604,
+          "fact_key": "it_vpn_id",
+          "category": "it",
+          "sources": [
+            "p_004828.md",
+            "p_000083.md",
+            "p_000361.md"
+          ]
+        },
+        {
+          "question": "Within how many hours must security incidents be reported at Rodriguez, Figueroa and Sanchez?",
+          "expected": "19 hours",
+          "predicted": "I don't know.",
+          "correct": false,
+          "latency_s": 0.572,
+          "fact_key": "it_incident_hours",
+          "category": "it",
+          "sources": [
+            "p_005477.md",
+            "p_001453.md",
+            "p_004865.md"
+          ]
+        },
+        {
+          "question": "What is the Security Hotline extension at Rodriguez, Figueroa and Sanchez?",
+          "expected": "7912",
+          "predicted": "I don't know.",
+          "correct": false,
+          "latency_s": 0.952,
+          "fact_key": "it_hotline_ext",
+          "category": "it",
+          "sources": [
+            "p_003928.md",
+            "p_001531.md",
+            "p_004765.md"
+          ]
+        },
+        {
+          "question": "How many days do new employees have to enrol in MFA at Rodriguez, Figueroa and Sanchez?",
+          "expected": "1 days",
+          "predicted": "I don't know.",
+          "correct": false,
+          "latency_s": 0.804,
+          "fact_key": "it_mfa_grace_days",
+          "category": "it",
+          "sources": [
+            "p_003320.md",
+            "p_000931.md",
+            "p_001347.md"
+          ]
+        },
+        {
+          "question": "What is the probation period for new hires at Rodriguez, Figueroa and Sanchez?",
+          "expected": "60 days",
+          "predicted": "60 calendar days from your start date.",
+          "correct": true,
+          "latency_s": 1.059,
+          "fact_key": "ob_probation_days",
+          "category": "ob",
+          "sources": [
+            "p_004988.md",
+            "p_003320.md",
+            "p_000931.md"
+          ]
+        },
+        {
+          "question": "What form must new hires submit before starting at Rodriguez, Figueroa and Sanchez?",
+          "expected": "NHR-2535",
+          "predicted": "New hires must submit form NHR-2535 at least 3 business days before their start date.",
+          "correct": true,
+          "latency_s": 0.887,
+          "fact_key": "ob_form_code",
+          "category": "ob",
+          "sources": [
+            "p_004509.md",
+            "p_004583.md",
+            "p_000059.md"
+          ]
+        },
+        {
+          "question": "Within how many days will a new hire's buddy be assigned at Rodriguez, Figueroa and Sanchez?",
+          "expected": "9 days",
+          "predicted": "Within 9 business days.",
+          "correct": true,
+          "latency_s": 1.016,
+          "fact_key": "ob_buddy_days",
+          "category": "ob",
+          "sources": [
+            "p_003320.md",
+            "p_000931.md",
+            "p_001347.md"
+          ]
+        },
+        {
+          "question": "How many hours is the mandatory orientation at Rodriguez, Figueroa and Sanchez?",
+          "expected": "11 hours",
+          "predicted": "11 hours",
+          "correct": true,
+          "latency_s": 0.86,
+          "fact_key": "ob_orientation_hours",
+          "category": "ob",
+          "sources": [
+            "p_003320.md",
+            "p_000931.md",
+            "p_001347.md"
+          ]
+        },
+        {
+          "question": "What is the onboarding checklist ID at Rodriguez, Figueroa and Sanchez?",
+          "expected": "OBD-1488",
+          "predicted": "The onboarding checklist ID at Rodriguez, Figueroa and Sanchez is OBD-1488.",
+          "correct": true,
+          "latency_s": 0.879,
+          "fact_key": "ob_checklist_id",
+          "category": "ob",
+          "sources": [
+            "p_001450.txt",
+            "p_002806.txt",
+            "p_000736.txt"
+          ]
+        },
+        {
+          "question": "What is the annual health insurance deductible at Rodriguez, Figueroa and Sanchez?",
+          "expected": "$2750",
+          "predicted": "$2750 per year.",
+          "correct": true,
+          "latency_s": 0.712,
+          "fact_key": "ben_health_deductible",
+          "category": "ben",
+          "sources": [
+            "p_001331.md",
+            "p_000201.md",
+            "p_000280.md"
+          ]
+        },
+        {
+          "question": "What is the annual HSA limit at Rodriguez, Figueroa and Sanchez?",
+          "expected": "$3050",
+          "predicted": "Up to $3050 annually (employer contribution limit).",
+          "correct": true,
+          "latency_s": 0.779,
+          "fact_key": "ben_hsa_limit",
+          "category": "ben",
+          "sources": [
+            "p_005388.md",
+            "p_000477.md",
+            "p_000510.md"
+          ]
+        },
+        {
+          "question": "What percentage of dental procedures are covered at Rodriguez, Figueroa and Sanchez?",
+          "expected": "84%",
+          "predicted": "84% of eligible procedures after the deductible.",
+          "correct": true,
+          "latency_s": 0.918,
+          "fact_key": "ben_dental_pct",
+          "category": "ben",
+          "sources": [
+            "p_004774.md",
+            "p_001335.md",
+            "p_001331.md"
+          ]
+        },
+        {
+          "question": "What is the annual vision allowance at Rodriguez, Figueroa and Sanchez?",
+          "expected": "$230",
+          "predicted": "The annual vision allowance at Rodriguez, Figueroa and Sanchez is $230 per year.",
+          "correct": true,
+          "latency_s": 0.875,
+          "fact_key": "ben_vision_allowance",
+          "category": "ben",
+          "sources": [
+            "p_005211.txt",
+            "p_005309.txt",
+            "p_005314.txt"
+          ]
+        },
+        {
+          "question": "How many PTO hours do employees accrue per month at Rodriguez, Figueroa and Sanchez?",
+          "expected": "8 hours per month",
+          "predicted": "I don't know.",
+          "correct": false,
+          "latency_s": 1.628,
+          "fact_key": "ben_pto_hours_per_month",
+          "category": "ben",
+          "sources": [
+            "p_003934.md",
+            "p_005158.md",
+            "p_005334.md"
+          ]
+        },
+        {
+          "question": "Within how many days must new employees enrol in benefits at Rodriguez, Figueroa and Sanchez?",
+          "expected": "42 days",
+          "predicted": "You have 42 days from your start date to enrol.",
+          "correct": true,
+          "latency_s": 0.91,
+          "fact_key": "ben_enrollment_days",
+          "category": "ben",
+          "sources": [
+            "p_001460.md",
+            "p_000093.md",
+            "p_000543.md"
+          ]
+        },
+        {
+          "question": "How many paid vacation days per year do employees receive at Rodriguez, Figueroa and Sanchez?",
+          "expected": "10 days",
+          "predicted": "Employees receive up to 10 paid vacation days per year.",
+          "correct": false,
+          "latency_s": 0.979,
+          "fact_key": "vac_max_days",
+          "category": "vac",
+          "sources": [
+            "p_005334.md",
+            "p_003934.md",
+            "p_005158.md"
+          ]
+        },
+        {
+          "question": "How many vacation days can be carried over at Rodriguez, Figueroa and Sanchez?",
+          "expected": "5 days",
+          "predicted": "Up to 5 days.",
+          "correct": true,
+          "latency_s": 0.726,
+          "fact_key": "vac_carryover_days",
+          "category": "vac",
+          "sources": [
+            "p_002779.md",
+            "p_002726.md",
+            "p_003324.md"
+          ]
+        },
+        {
+          "question": "How many days in advance must vacation requests be submitted at Rodriguez, Figueroa and Sanchez?",
+          "expected": "25 days",
+          "predicted": "25 days",
+          "correct": true,
+          "latency_s": 0.675,
+          "fact_key": "vac_advance_days",
+          "category": "vac",
+          "sources": [
+            "p_005430.txt",
+            "p_001454.txt",
+            "p_002846.txt"
+          ]
+        },
+        {
+          "question": "At what percentage is unused vacation paid out upon separation at Rodriguez, Figueroa and Sanchez?",
+          "expected": "54%",
+          "predicted": "It is paid out at 54% of your daily rate.",
+          "correct": true,
+          "latency_s": 1.041,
+          "fact_key": "vac_payout_pct",
+          "category": "vac",
+          "sources": [
+            "p_002726.md",
+            "p_003065.md",
+            "p_004571.md"
+          ]
+        },
+        {
+          "question": "What form is used to request vacation at Rodriguez, Figueroa and Sanchez?",
+          "expected": "VAC-6574",
+          "predicted": "Form VAC-6574 is used to request vacation at Rodriguez, Figueroa and Sanchez.",
+          "correct": true,
+          "latency_s": 0.86,
+          "fact_key": "vac_form",
+          "category": "vac",
+          "sources": [
+            "p_003188.md",
+            "p_005039.md",
+            "p_005052.md"
+          ]
+        },
+        {
+          "question": "What form is used to report a code of conduct violation at Rodriguez, Figueroa and Sanchez?",
+          "expected": "ETH-3547",
+          "predicted": "Use form ETH-3547.",
+          "correct": true,
+          "latency_s": 0.638,
+          "fact_key": "coc_report_form",
+          "category": "coc",
+          "sources": [
+            "p_001394.md",
+            "p_004909.md",
+            "p_000251.md"
+          ]
+        },
+        {
+          "question": "What is the ethics hotline extension at Rodriguez, Figueroa and Sanchez?",
+          "expected": "4527",
+          "predicted": "The ethics hotline extension at Rodriguez, Figueroa and Sanchez is 4527.",
+          "correct": true,
+          "latency_s": 0.874,
+          "fact_key": "coc_hotline_ext",
+          "category": "coc",
+          "sources": [
+            "p_003928.md",
+            "p_000355.md",
+            "p_001053.md"
+          ]
+        },
+        {
+          "question": "Within how many days does an investigation begin at Rodriguez, Figueroa and Sanchez?",
+          "expected": "58 days",
+          "predicted": "An investigation begins within 58 days at Rodriguez, Figueroa and Sanchez.",
+          "correct": true,
+          "latency_s": 0.809,
+          "fact_key": "coc_investigation_days",
+          "category": "coc",
+          "sources": [
+            "p_003928.md",
+            "p_004568.md",
+            "p_000903.md"
+          ]
+        },
+        {
+          "question": "How often is the code of conduct reviewed at Rodriguez, Figueroa and Sanchez?",
+          "expected": "6 months",
+          "predicted": "Every 6 months.",
+          "correct": true,
+          "latency_s": 0.854,
+          "fact_key": "coc_review_months",
+          "category": "coc",
+          "sources": [
+            "p_002724.md",
+            "p_000395.md",
+            "p_001221.md"
+          ]
+        },
+        {
+          "question": "Who is the compliance officer at Rodriguez, Figueroa and Sanchez?",
+          "expected": "Kevin Pacheco",
+          "predicted": "The compliance officer at Rodriguez, Figueroa and Sanchez is Kevin Pacheco.",
+          "correct": true,
+          "latency_s": 0.745,
+          "fact_key": "coc_compliance_officer",
+          "category": "coc",
+          "sources": [
+            "p_002747.md",
+            "p_005477.md",
+            "p_004865.md"
+          ]
+        },
+        {
+          "question": "How often are performance reviews held at Rodriguez, Figueroa and Sanchez?",
+          "expected": "12 months",
+          "predicted": "Performance reviews at Rodriguez, Figueroa and Sanchez are conducted every 12 months.",
+          "correct": true,
+          "latency_s": 1.212,
+          "fact_key": "prf_review_months",
+          "category": "prf",
+          "sources": [
+            "p_002774.md",
+            "p_005013.md",
+            "p_003342.md"
+          ]
+        },
+        {
+          "question": "What is the maximum performance rating at Rodriguez, Figueroa and Sanchez?",
+          "expected": "4",
+          "predicted": "The maximum performance rating at Rodriguez, Figueroa and Sanchez is 4 on a 4-point scale.",
+          "correct": true,
+          "latency_s": 0.995,
+          "fact_key": "prf_rating_max",
+          "category": "prf",
+          "sources": [
+            "p_004808.md",
+            "p_000268.md",
+            "p_001108.md"
+          ]
+        },
+        {
+          "question": "What is the bonus target percentage at Rodriguez, Figueroa and Sanchez?",
+          "expected": "16%",
+          "predicted": "The bonus target percentage at Rodriguez, Figueroa and Sanchez is up to 16% of base salary.",
+          "correct": true,
+          "latency_s": 1.06,
+          "fact_key": "prf_bonus_pct",
+          "category": "prf",
+          "sources": [
+            "p_004808.md",
+            "p_000402.md",
+            "p_000595.md"
+          ]
+        },
+        {
+          "question": "How many OKRs are employees expected to maintain at Rodriguez, Figueroa and Sanchez?",
+          "expected": "5",
+          "predicted": "Employees are expected to maintain 5 active OKRs at Rodriguez, Figueroa and Sanchez.",
+          "correct": true,
+          "latency_s": 1.53,
+          "fact_key": "prf_okr_quota",
+          "category": "prf",
+          "sources": [
+            "p_004808.md",
+            "p_002774.md",
+            "p_005013.md"
+          ]
+        },
+        {
+          "question": "How many days before a review must the self-review be submitted at Rodriguez, Figueroa and Sanchez?",
+          "expected": "13 days",
+          "predicted": "13 days",
+          "correct": true,
+          "latency_s": 1.004,
+          "fact_key": "prf_self_review_days",
+          "category": "prf",
+          "sources": [
+            "p_004702.md",
+            "p_000006.md",
+            "p_000114.md"
+          ]
+        },
+        {
+          "question": "What form is used for performance calibration at Rodriguez, Figueroa and Sanchez?",
+          "expected": "CAL-1711",
+          "predicted": "I don't know",
+          "correct": false,
+          "latency_s": 0.612,
+          "fact_key": "prf_calibration_form",
+          "category": "prf",
+          "sources": [
+            "p_003342.md",
+            "p_001354.md",
+            "p_002774.md"
+          ]
+        },
+        {
+          "question": "Within how many days must the required training be completed at Rodriguez, Figueroa and Sanchez?",
+          "expected": "64 days",
+          "predicted": "All employees must complete course TRN-8527 within 64 days.",
+          "correct": true,
+          "latency_s": 0.832,
+          "fact_key": "trn_deadline_days",
+          "category": "trn",
+          "sources": [
+            "p_002811.md",
+            "p_002851.md",
+            "p_002870.md"
+          ]
+        },
+        {
+          "question": "What certification is awarded upon completing the required training at Rodriguez, Figueroa and Sanchez?",
+          "expected": "CERT-3045",
+          "predicted": "CERT-3045",
+          "correct": true,
+          "latency_s": 0.718,
+          "fact_key": "trn_cert_id",
+          "category": "trn",
+          "sources": [
+            "p_005010.md",
+            "p_001470.md",
+            "p_002886.md"
+          ]
+        },
+        {
+          "question": "What passing score is required for the training exam at Rodriguez, Figueroa and Sanchez?",
+          "expected": "82%",
+          "predicted": "A passing score of 82% or higher is required.",
+          "correct": true,
+          "latency_s": 6.673,
+          "fact_key": "trn_passing_score",
+          "category": "trn",
+          "sources": [
+            "p_002811.md",
+            "p_002851.md",
+            "p_002870.md"
+          ]
+        },
+        {
+          "question": "How many days must employees wait before retaking the training exam at Rodriguez, Figueroa and Sanchez?",
+          "expected": "5 days",
+          "predicted": "5 days",
+          "correct": true,
+          "latency_s": 0.802,
+          "fact_key": "trn_retake_days",
+          "category": "trn",
+          "sources": [
+            "p_002811.md",
+            "p_002851.md",
+            "p_002870.md"
+          ]
+        },
+        {
+          "question": "What is the LMS access code for required training at Rodriguez, Figueroa and Sanchez?",
+          "expected": "LMS-6925",
+          "predicted": "LMS-6925",
+          "correct": true,
+          "latency_s": 0.728,
+          "fact_key": "trn_lms_code",
+          "category": "trn",
+          "sources": [
+            "p_002738.md",
+            "p_004908.md",
+            "p_002769.md"
+          ]
+        },
+        {
+          "question": "What is the purchase order threshold at Rodriguez, Figueroa and Sanchez?",
+          "expected": "$5000",
+          "predicted": "The purchase order threshold at Rodriguez, Figueroa and Sanchez is $5000.",
+          "correct": true,
+          "latency_s": 0.932,
+          "fact_key": "pro_po_threshold",
+          "category": "pro",
+          "sources": [
+            "p_003891.md",
+            "p_003683.md",
+            "p_005152.md"
+          ]
+        },
+        {
+          "question": "How many days does vendor approval take at Rodriguez, Figueroa and Sanchez?",
+          "expected": "7 days",
+          "predicted": "Vendor approval takes up to 7 business days at Rodriguez, Figueroa and Sanchez.",
+          "correct": true,
+          "latency_s": 0.69,
+          "fact_key": "pro_vendor_days",
+          "category": "pro",
+          "sources": [
+            "p_000189.md",
+            "p_000634.md",
+            "p_000725.md"
+          ]
+        },
+        {
+          "question": "How many days does contract legal review take at Rodriguez, Figueroa and Sanchez?",
+          "expected": "4 days",
+          "predicted": "I don't know",
+          "correct": false,
+          "latency_s": 0.712,
+          "fact_key": "pro_contract_days",
+          "category": "pro",
+          "sources": [
+            "p_000106.txt",
+            "p_000253.txt",
+            "p_000653.txt"
+          ]
+        },
+        {
+          "question": "What approval code is required for purchase orders at Rodriguez, Figueroa and Sanchez?",
+          "expected": "APR-4733",
+          "predicted": "The approval code required for purchase orders at Rodriguez, Figueroa and Sanchez is APR-4733.",
+          "correct": true,
+          "latency_s": 1.032,
+          "fact_key": "pro_approval_code",
+          "category": "pro",
+          "sources": [
+            "p_004924.md",
+            "p_003562.md",
+            "p_002787.md"
+          ]
+        },
+        {
+          "question": "What is the emergency purchase limit (no PO required) at Rodriguez, Figueroa and Sanchez?",
+          "expected": "$650",
+          "predicted": "The emergency purchase limit (no PO required) at Rodriguez, Figueroa and Sanchez is $650.",
+          "correct": true,
+          "latency_s": 0.951,
+          "fact_key": "pro_emergency_limit",
+          "category": "pro",
+          "sources": [
+            "p_002799.md",
+            "p_001424.md",
+            "p_001618.md"
+          ]
+        },
+        {
+          "question": "How many days per week can employees work remotely at Rodriguez, Figueroa and Sanchez?",
+          "expected": "2 days per week",
+          "predicted": "Up to 2 days per week.",
+          "correct": true,
+          "latency_s": 0.76,
+          "fact_key": "rw_days_per_week",
+          "category": "rw",
+          "sources": [
+            "p_003544.md",
+            "p_001362.md",
+            "p_004860.md"
+          ]
+        },
+        {
+          "question": "What is the one-time equipment allowance for remote workers at Rodriguez, Figueroa and Sanchez?",
+          "expected": "$350",
+          "predicted": "A one-time allowance of $350.",
+          "correct": true,
+          "latency_s": 0.813,
+          "fact_key": "rw_equipment_allowance",
+          "category": "rw",
+          "sources": [
+            "p_003558.md",
+            "p_004860.md",
+            "p_001362.md"
+          ]
+        },
+        {
+          "question": "What is the monthly remote work stipend at Rodriguez, Figueroa and Sanchez?",
+          "expected": "$150",
+          "predicted": "The monthly remote work stipend at Rodriguez, Figueroa and Sanchez is $150.",
+          "correct": true,
+          "latency_s": 0.779,
+          "fact_key": "rw_monthly_stipend",
+          "category": "rw",
+          "sources": [
+            "p_003558.md",
+            "p_004860.md",
+            "p_003544.md"
+          ]
+        },
+        {
+          "question": "What VPN profile is required for remote work at Rodriguez, Figueroa and Sanchez?",
+          "expected": "VPN-5554",
+          "predicted": "Profile VPN-5554.",
+          "correct": true,
+          "latency_s": 0.659,
+          "fact_key": "rw_vpn_id",
+          "category": "rw",
+          "sources": [
+            "p_003558.md",
+            "p_004987.md",
+            "p_004860.md"
+          ]
+        },
+        {
+          "question": "What form must be submitted to request a remote work arrangement at Rodriguez, Figueroa and Sanchez?",
+          "expected": "RWF-6977",
+          "predicted": "Submit form RWF-6977 for manager approval.",
+          "correct": true,
+          "latency_s": 0.748,
+          "fact_key": "rw_request_form",
+          "category": "rw",
+          "sources": [
+            "p_000608.md",
+            "p_000884.md",
+            "p_001625.md"
+          ]
+        },
+        {
+          "question": "What are the core collaboration hours at Rodriguez, Figueroa and Sanchez?",
+          "expected": "9:00 AM",
+          "predicted": "I don't know.",
+          "correct": false,
+          "latency_s": 0.843,
+          "fact_key": "rw_core_start",
+          "category": "rw",
+          "sources": [
+            "p_004911.txt",
+            "p_000041.txt",
+            "p_000106.txt"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,4 +1,3 @@
-version: "3.9"
 services:
   backend:
     build:
@@ -7,25 +6,36 @@ services:
     ports:
       - "8000:8000"
     environment:
-      - OPENAI_API_KEY=your_openai_key
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
     volumes:
-      - ./backend:/app
-      - ./.langchain.db:/app/.langchain.db
+      - ./backend/database/vector_db:/app/database/vector_db
+      - ./backend/database/input_db:/app/database/input_db
+    healthcheck:
+      test: ["CMD-SHELL", "python -c \"import urllib.request; urllib.request.urlopen('http://localhost:8000/health')\""]
+      interval: 10s
+      timeout: 5s
+      retries: 6
+      start_period: 15s
 
-  # frontend:
-  #   build: ./TSfrontend
-  #   ports:
-  #     - "3000:3000"
-  #   environment:
-  #     - NEXT_PUBLIC_API_URL=http://backend:8000
-  #   depends_on:
-  #     - backend
+  frontend:
+    build:
+      context: ./TSfrontend
+      args:
+        NEXT_PUBLIC_API_URL: http://localhost:8000
+    ports:
+      - "3000:3000"
+    depends_on:
+      backend:
+        condition: service_healthy
 
-  # gradio:
-  #   build:
-  #     context: .
-  #     dockerfile: Dockerfile.gradio
-  #   ports:
-  #     - "7860:7860"
-  #   depends_on:
-  #     - backend 
+  gradio:
+    build:
+      context: .
+      dockerfile: Dockerfile.gradio
+    ports:
+      - "7860:7860"
+    environment:
+      - BACKEND_URL=http://backend:8000
+    depends_on:
+      backend:
+        condition: service_healthy

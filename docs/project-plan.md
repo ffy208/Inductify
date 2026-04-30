@@ -173,17 +173,47 @@
 ## Implementation Order
 
 ```
-F1 (cited answers)     ← easy win, high visibility
-F3 (upload/index API)  ← unblocks F4 and F8
-F2 (async)             ← can be done alongside F3
-F4 (re-ranking)        ← core accuracy claim
-F5 (LangChain chain)   ← replaces ad-hoc OpenAI calls
-F6 (session history)   ← depends on F5
-F8 (frontend wiring)   ← depends on F1 + F3
-F7 (full Docker)       ← depends on F8
-F9 (agent)             ← depends on F5 + F6
-F10 (auth)             ← final hardening
+F1  (cited answers)     ✅ DONE
+F2  (async pipeline)    ✅ DONE
+F3  (upload/index API)  ✅ DONE
+F4  (re-ranking)        ✅ DONE
+F5  (LangChain chain)   ✅ DONE
+F6  (session history)   ✅ DONE
+F8  (frontend wiring)   ✅ DONE
+
+A   (ablation eval)     ← NEXT — validate 56%→88% claim with real data
+F7  (full Docker)       ← after ablation — complete deployment story
+F9  (agent)             ← supports "agentic AI" resume claim
+F10 (auth)              ← final hardening
 ```
+
+---
+
+## Task A — Ablation Evaluation
+
+**Why:** The core resume claim is "56% → 88% accuracy via chunk-level re-ranking."
+This number is currently an estimate. Running the ablation produces real, defensible data.
+
+**What to build:**
+
+`rag_eval.py` — evaluation script with three conditions:
+
+| Condition | Setup | Expected |
+|-----------|-------|----------|
+| LLM-only | No retrieval, raw GPT-4.1-mini | ~10–20% |
+| RAG, no re-rank | top-3 cosine similarity | ~60–75% |
+| RAG + re-rank | top-10 → CrossEncoder → top-3 | ~85–92% |
+
+**Inputs already available:**
+- `data/eval_qa.json` — 54 Q&A pairs (synthetic unique facts)
+- `data/synthetic_docs/` — 10K indexed documents
+- `data/ground_truth.json` — canonical answers
+
+**Output:**
+- `data/eval_results.json` — per-condition accuracy + per-question detail
+- Console table with accuracy, latency, and pass/fail per category
+
+**Files:** `rag_eval.py` (new), `data/eval_results.json` (generated)
 
 ---
 

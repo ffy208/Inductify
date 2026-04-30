@@ -4,32 +4,41 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Literal, Optional
 
-from fastapi import BackgroundTasks, FastAPI, HTTPException, UploadFile
+from fastapi import BackgroundTasks, Depends, FastAPI, HTTPException, Request, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from langchain_core.globals import set_llm_cache
 from langchain_community.cache import SQLiteCache
 from pydantic import BaseModel
+from slowapi import _rate_limit_exceeded_handler
+from slowapi.errors import RateLimitExceeded
 
+from backend.auth import limiter, verify_api_key
 from backend.database.db_manager import DatabaseManager
 from backend.embedding.reranker import Reranker
 from backend.llm import langchain_chain
+from backend.llm import agent as llm_agent
 
 EMBEDDING_PROVIDER = "openai"
 
 # Uploaded files are stored here before indexing
-UPLOAD_DIR = Path(os.getenv("UPLOAD_DIR", "backend/database/input_db/uploads"))
+_default_upload = Path(__file__).parent / "database" / "input_db" / "uploads"
+UPLOAD_DIR = Path(os.getenv("UPLOAD_DIR", str(_default_upload)))
 UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
 
 # Allowed file extensions for upload
 ALLOWED_EXTENSIONS = {".txt", ".md", ".pdf", ".xlsx"}
 
+_ALLOWED_ORIGINS = [o.strip() for o in os.getenv("ALLOWED_ORIGINS", "*").split(",")]
+
 app = FastAPI(title="Inductify Onboarding API")
+app.state.limiter = limiter
+app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=_ALLOWED_ORIGINS,
     allow_credentials=True,
     allow_methods=["*"],
-    allow_headers=["*"],
+    allow_headers=["*", "X-API-Key"],
 )
 
 set_llm_cache(SQLiteCache(database_path=".langchain.db"))
@@ -40,6 +49,13 @@ vector_db = db_manager.get_db()
 _reranker: Optional[Reranker] = None if os.getenv("DISABLE_RERANKER") else Reranker()
 
 _chain = langchain_chain.build_rag_chain(
+    vector_db,
+    reranker=_reranker,
+    k_fetch=10,
+    k_final=3,
+)
+
+_agent_executor = llm_agent.build_agent(
     vector_db,
     reranker=_reranker,
     k_fetch=10,
@@ -125,8 +141,9 @@ class IndexStatusResponse(BaseModel):
 # Chat endpoints
 # ---------------------------------------------------------------------------
 
-@app.post("/ask", response_model=ChatResponse)
-async def ask_question(query: ChatRequest) -> ChatResponse:
+@app.post("/ask", response_model=ChatResponse, dependencies=[Depends(verify_api_key)])
+@limiter.limit("30/minute")
+async def ask_question(request: Request, query: ChatRequest) -> ChatResponse:
     """Answer a question using RAG + re-ranking. Returns answer and source citations."""
     result = await langchain_chain.ask(
         session_id=query.session_id,
@@ -139,10 +156,26 @@ async def ask_question(query: ChatRequest) -> ChatResponse:
     )
 
 
+@app.post("/agent/ask", response_model=ChatResponse, dependencies=[Depends(verify_api_key)])
+@limiter.limit("30/minute")
+async def agent_ask(request: Request, query: ChatRequest) -> ChatResponse:
+    """Answer using a ReAct agent that decides whether to search or introspect."""
+    result = await llm_agent.ask_agent(
+        session_id=query.session_id,
+        question=query.message,
+        executor=_agent_executor,
+    )
+    return ChatResponse(
+        answer=result["answer"],
+        sources=[SourceItem(**s) for s in result["sources"]],
+    )
+
+
 @app.delete("/session/{session_id}", status_code=204)
 async def delete_session(session_id: str) -> None:
-    """Clear conversation history for a session."""
+    """Clear conversation history for a session (RAG chain + agent)."""
     langchain_chain.clear_session(session_id)
+    llm_agent.clear_agent_session(session_id)
 
 
 # ---------------------------------------------------------------------------
@@ -225,5 +258,8 @@ async def index_status(job_id: str) -> IndexStatusResponse:
 
 @app.get("/health")
 async def health() -> dict:
-    reranker_status = "disabled" if _reranker is None else "enabled"
-    return {"status": "ok", "reranker": reranker_status}
+    return {
+        "status": "ok",
+        "reranker": "disabled" if _reranker is None else "enabled",
+        "agent": "enabled",
+    }
