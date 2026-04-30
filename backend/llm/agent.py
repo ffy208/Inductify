@@ -87,7 +87,7 @@ def _make_tools(
 
 def build_agent(
     vector_db: Any,
-    model: str = "gpt-4.1-mini",
+    model: str | None = None,
     temperature: float = 0.0,
     reranker: Optional[Any] = None,
     k_fetch: int = 10,

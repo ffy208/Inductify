@@ -82,7 +82,7 @@ class _RagChain:
 
 def build_rag_chain(
     vector_db: Any,
-    model: str = "gpt-4.1-mini",
+    model: str | None = None,
     temperature: float = 0.3,
     reranker: Optional[Reranker] = None,
     k_fetch: int = 10,
