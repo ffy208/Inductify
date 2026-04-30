@@ -24,6 +24,13 @@ data/eval_qa*.json
 data/eval_vectordb/
 data/policy_vectordb/
 
+# Upload staging (user data, not for version control)
+backend/database/input_db/uploads/
+backend/database/input_db/*.pdf
+backend/database/input_db/*.txt
+backend/database/input_db/*.md
+backend/database/input_db/*.xlsx
+
 # Misc
 gradio-env/
 .langchain.db
