@@ -1,14 +1,29 @@
-gradio-env
-.venv
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+*.egg-info/
 
+# Env
 .env
-.idea
+.env.*
 
-.ds_store
+# IDE
+.idea/
+.vscode/
+*.DS_Store
 
-# Generated synthetic corpus (large, reproducible via tools/generate_docs.py)
+# Node / Next.js
+frontend/.next/
+frontend/node_modules/
+
+# Data (large / reproducible)
 data/synthetic_docs/
 data/eval_qa*.json
+data/eval_vectordb/
+data/policy_vectordb/
 
-#
-TSfrontend
+# Misc
+gradio-env/
+.langchain.db
