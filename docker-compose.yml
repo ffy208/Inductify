@@ -32,3 +32,29 @@ services:
     depends_on:
       backend:
         condition: service_healthy
+
+  # ---------------------------------------------------------------------------
+  # Demo profile: pre-loads synthetic policy documents into the vector DB.
+  # Usage: docker compose --profile demo up --build
+  #
+  # The indexer runs in parallel with the backend. Queries will return results
+  # once indexing completes (a few minutes depending on corpus size).
+  # POLICY_ONLY=1 (default): index only p_* policy docs (mirrors 83% eval setup)
+  # POLICY_ONLY=0: index the full 10K corpus including distractors and noise
+  # ---------------------------------------------------------------------------
+  indexer:
+    profiles: ["demo"]
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+      args:
+        INSTALL_RERANKER: ${INSTALL_RERANKER:-false}
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - DOCS_DIR=/app/data/synthetic_docs
+      - POLICY_ONLY=${POLICY_ONLY:-1}
+    volumes:
+      - ./backend/database/vector_db:/app/backend/database/vector_db
+      - ./data/synthetic_docs:/app/data/synthetic_docs:ro
+    command: python /app/backend/scripts/index_demo_data.py
+    restart: "no"

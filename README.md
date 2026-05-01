@@ -19,9 +19,15 @@ cd Inductify
 cp .env.example .env
 # Edit .env and set OPENAI_API_KEY=sk-...
 
-# 3. Start everything
+# 3a. Start with empty database (upload your own documents via the UI)
 docker compose up --build
+
+# 3b. Start with pre-loaded synthetic demo data (~5,500 policy documents)
+docker compose --profile demo up --build
 ```
+
+> **Demo mode** indexes the synthetic policy corpus on first run (calls OpenAI Embeddings API, ~$0.05).  
+> Once the `indexer` container logs `✓ Done`, the chatbot can answer policy questions.
 
 | Service  | URL                    |
 |----------|------------------------|
