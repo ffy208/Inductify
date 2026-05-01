@@ -32,6 +32,7 @@ backend/database/input_db/*.pdf
 backend/database/input_db/*.txt
 backend/database/input_db/*.md
 backend/database/input_db/*.xlsx
+backend/database/vector_db/
 
 # Misc
 gradio-env/
