@@ -176,7 +176,7 @@ export default function Component({
               <div className="flex w-full items-center gap-3">
                 <Avatar
                   size="sm"
-                  src="/usagi.svg"
+                  src="/YahaUsagi.webp"
                 />
                 <div className="flex flex-col text-left">
                   <p className="text-small font-semibold leading-5 text-foreground">Usagi</p>
@@ -194,7 +194,7 @@ export default function Component({
               <div className="flex w-full items-center gap-3">
                 <Avatar
                   size="sm"
-                  src="/usagi.svg"
+                  src="/YahaUsagi.webp"
                 />
                 <div className="flex flex-col text-left">
                   <p className="text-small font-normal leading-5 text-foreground">Usagi</p>
