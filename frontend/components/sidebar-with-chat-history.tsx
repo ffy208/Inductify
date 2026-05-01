@@ -21,7 +21,7 @@ import {
 } from "@heroui/react";
 import {Icon} from "@iconify/react";
 
-import {AcmeIcon} from "./acme";
+import {InductifyIcon} from "./acme";
 import SidebarDrawer from "./sidebar-drawer";
 
 /**
@@ -158,9 +158,9 @@ export default function Component({
     <div className="relative flex h-full w-72 flex-1 flex-col p-6">
       <div className="flex items-center gap-2 px-2">
         <div className="flex h-8 w-8 items-center justify-center rounded-full bg-foreground">
-          <AcmeIcon className="text-background" />
+          <InductifyIcon className="text-background" />
         </div>
-        <span className="text-base font-bold uppercase leading-6 text-foreground">Acme AI</span>
+        <span className="text-base font-bold uppercase leading-6 text-foreground">Inductify AI</span>
       </div>
 
       <Spacer y={8} />
@@ -176,11 +176,11 @@ export default function Component({
               <div className="flex w-full items-center gap-3">
                 <Avatar
                   size="sm"
-                  src="https://nextuipro.nyc3.cdn.digitaloceanspaces.com/components-images/avatars/3a906b3de8eaa53e14582edf5c918b5d.jpg"
+                  src="/usagi.svg"
                 />
                 <div className="flex flex-col text-left">
-                  <p className="text-small font-semibold leading-5 text-foreground">Taylor Smith</p>
-                  <p className="text-tiny text-default-400">taylor@mail.com</p>
+                  <p className="text-small font-semibold leading-5 text-foreground">Usagi</p>
+                  <p className="text-tiny text-default-400">usagi@inductify.ai</p>
                 </div>
               </div>
             </Button>
@@ -194,11 +194,11 @@ export default function Component({
               <div className="flex w-full items-center gap-3">
                 <Avatar
                   size="sm"
-                  src="https://nextuipro.nyc3.cdn.digitaloceanspaces.com/components-images/avatars/3a906b3de8eaa53e14582edf5c918b5d.jpg"
+                  src="/usagi.svg"
                 />
                 <div className="flex flex-col text-left">
-                  <p className="text-small font-normal leading-5 text-foreground">Taylor Smith</p>
-                  <p className="text-tiny text-default-400">taylor@mail.com</p>
+                  <p className="text-small font-normal leading-5 text-foreground">Usagi</p>
+                  <p className="text-tiny text-default-400">usagi@inductify.ai</p>
                 </div>
               </div>
             </DropdownItem>
@@ -210,7 +210,7 @@ export default function Component({
                 My GPTs
               </DropdownItem>
               <DropdownItem key="customize-acmeai" className="py-[4px] text-default-500">
-                Customize AcmeAI
+                Customize Inductify
               </DropdownItem>
             </DropdownSection>
             <DropdownSection showDivider aria-label="profile-section-2">

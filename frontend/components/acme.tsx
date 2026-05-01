@@ -2,13 +2,20 @@ import type {IconSvgProps} from "./types";
 
 import React from "react";
 
-export const AcmeIcon: React.FC<IconSvgProps> = ({size = 32, width, height, ...props}) => (
+export const InductifyIcon: React.FC<IconSvgProps> = ({size = 32, width, height, ...props}) => (
   <svg fill="none" height={size || height} viewBox="0 0 32 32" width={size || width} {...props}>
-    <path
-      clipRule="evenodd"
-      d="M17.6482 10.1305L15.8785 7.02583L7.02979 22.5499H10.5278L17.6482 10.1305ZM19.8798 14.0457L18.11 17.1983L19.394 19.4511H16.8453L15.1056 22.5499H24.7272L19.8798 14.0457Z"
-      fill="currentColor"
-      fillRule="evenodd"
-    />
+    {/* Top circle — the "conclusion" drawn by inductive reasoning */}
+    <circle cx="16" cy="6" r="4.5" fill="currentColor" />
+    {/* Trunk */}
+    <path d="M16 10.5 L16 19" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+    {/* Left branch */}
+    <path d="M16 19 L7 27" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+    {/* Right branch */}
+    <path d="M16 19 L25 27" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+    {/* Junction node */}
+    <circle cx="16" cy="19" r="2.5" fill="currentColor" />
+    {/* Leaf nodes */}
+    <circle cx="7" cy="27" r="3" fill="currentColor" />
+    <circle cx="25" cy="27" r="3" fill="currentColor" />
   </svg>
 );

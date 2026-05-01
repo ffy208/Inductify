@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Background -->
+  <circle cx="50" cy="50" r="50" fill="#ede8f5"/>
+
+  <!-- Left ear (outer) -->
+  <ellipse cx="32" cy="25" rx="11" ry="22" fill="#f5f0ff" transform="rotate(-8 32 25)"/>
+  <!-- Left ear (inner pink) -->
+  <ellipse cx="32" cy="25" rx="6" ry="15" fill="#f9c8dc" transform="rotate(-8 32 25)"/>
+
+  <!-- Right ear (outer) -->
+  <ellipse cx="68" cy="25" rx="11" ry="22" fill="#f5f0ff" transform="rotate(8 68 25)"/>
+  <!-- Right ear (inner pink) -->
+  <ellipse cx="68" cy="25" rx="6" ry="15" fill="#f9c8dc" transform="rotate(8 68 25)"/>
+
+  <!-- Face -->
+  <circle cx="50" cy="58" r="29" fill="#fdfbff"/>
+
+  <!-- Left eye -->
+  <circle cx="40" cy="53" r="4.5" fill="#1a1a2e"/>
+  <circle cx="41.8" cy="51.2" r="1.8" fill="white"/>
+
+  <!-- Right eye -->
+  <circle cx="60" cy="53" r="4.5" fill="#1a1a2e"/>
+  <circle cx="61.8" cy="51.2" r="1.8" fill="white"/>
+
+  <!-- Nose -->
+  <ellipse cx="50" cy="62" rx="3" ry="2.2" fill="#f4a0bc"/>
+
+  <!-- Mouth -->
+  <path d="M 44 67 Q 50 72 56 67" stroke="#c8a0b8" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+
+  <!-- Rosy cheeks -->
+  <ellipse cx="36" cy="62" rx="7.5" ry="4.5" fill="#f9a0bc" opacity="0.35"/>
+  <ellipse cx="64" cy="62" rx="7.5" ry="4.5" fill="#f9a0bc" opacity="0.35"/>
+</svg>
