@@ -1,7 +1,7 @@
 import os
 import tempfile
-from langchain_community.document_loaders import PyMuPDFLoader, UnstructuredExcelLoader, UnstructuredMarkdownLoader, \
-    UnstructuredFileLoader
+from langchain_community.document_loaders import PyMuPDFLoader, TextLoader
+from langchain_core.documents import Document
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_chroma import Chroma
 from dotenv import load_dotenv
@@ -16,6 +16,20 @@ DEFAULT_PERSIST_PATH = os.path.join(BASE_DIR, "vector_db")
 
 CHUNK_SIZE = 500
 CHUNK_OVERLAP = 150
+
+
+class _ExcelLoader:
+    """Minimal xlsx loader using pandas — no `unstructured` required."""
+
+    def __init__(self, path: str) -> None:
+        self._path = path
+
+    def load(self) -> list[Document]:
+        import pandas as pd
+        df = pd.read_excel(self._path, engine='openpyxl')
+        text = df.to_string(index=False)
+        return [Document(page_content=text, metadata={"source": self._path})]
+
 
 class DatabaseManager:
     _instance = None
@@ -79,11 +93,9 @@ class DatabaseManager:
             case 'pdf':
                 loaders.append(PyMuPDFLoader(file))
             case 'xlsx':
-                loaders.append(UnstructuredExcelLoader(file))
-            case 'md':
-                loaders.append(UnstructuredMarkdownLoader(file))
-            case 'txt':
-                loaders.append(UnstructuredFileLoader(file))
+                loaders.append(_ExcelLoader(file))
+            case 'md' | 'txt':
+                loaders.append(TextLoader(file, encoding='utf-8', autodetect_encoding=True))
             case _:
                 pass
 
