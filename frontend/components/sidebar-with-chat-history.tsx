@@ -20,7 +20,6 @@ import {Icon} from "@iconify/react";
 
 import type {Conversation} from "./app";
 
-import {InductifyIcon} from "./acme";
 import SidebarDrawer from "./sidebar-drawer";
 
 /**
@@ -74,11 +73,14 @@ function RecentPromptDropdown() {
   return (
     <Dropdown>
       <DropdownTrigger>
-        <Icon
-          className="text-default-500 opacity-0 group-hover:opacity-100"
-          icon="solar:menu-dots-bold"
-          width={24}
-        />
+        <button
+          aria-label="Conversation options"
+          className="inline-flex items-center justify-center text-default-500 opacity-0 group-hover:opacity-100"
+          type="button"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <Icon icon="solar:menu-dots-bold" width={24} />
+        </button>
       </DropdownTrigger>
       <DropdownMenu aria-label="Dropdown menu with icons" className="py-2" variant="faded">
         <DropdownItem
@@ -254,21 +256,26 @@ export default function Component({
           <div className="flex flex-col">
             <p className="pb-1 pl-[10px] text-small text-default-400">Recent</p>
             {conversations.map((conv) => (
-              <button
+              <div
                 key={conv.id}
+                aria-label={`Open conversation: ${conv.title}`}
                 className={cn(
-                  "group flex h-[44px] w-full items-center justify-between rounded-medium px-[12px] py-[10px] text-left text-small text-default-500 transition-colors hover:bg-default-100",
+                  "group flex h-[44px] w-full cursor-pointer items-center justify-between rounded-medium px-[12px] py-[10px] text-left text-small text-default-500 transition-colors hover:bg-default-100",
                   activeConversationId === conv.id && "bg-default-200 text-foreground",
                 )}
-                type="button"
+                role="button"
+                tabIndex={0}
                 onClick={() => onSelectConversation?.(conv.id)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    onSelectConversation?.(conv.id);
+                  }
+                }}
               >
                 <span className="truncate">{conv.title}</span>
-                {/* stop click bubbling so the 3-dot menu doesn't also load the conversation */}
-                <span onClick={(e) => e.stopPropagation()}>
-                  <RecentPromptDropdown />
-                </span>
-              </button>
+                <RecentPromptDropdown />
+              </div>
             ))}
           </div>
         )}
