@@ -1,7 +1,7 @@
 """
-LangChain 1.x ReAct agent for agentic onboarding Q&A.
+ReAct agent for agentic onboarding Q&A.
 
-Uses langchain.agents.create_agent (LangGraph-based tool-calling agent).
+Uses langgraph.prebuilt.create_react_agent (LangGraph tool-calling agent).
 The agent decides per turn which tool to invoke:
   - vector_search:   semantic retrieval from the policy knowledge base
   - list_documents:  enumerate document categories available
@@ -14,7 +14,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from langchain.agents import create_agent
+from langgraph.prebuilt import create_react_agent
 from langchain_core.messages import HumanMessage, ToolMessage
 from langchain_core.tools import tool
 
@@ -96,7 +96,7 @@ def build_agent(
     """Return a compiled LangGraph agent wired to the given vector_db."""
     llm = get_llm(model=model, temperature=temperature)
     tools = _make_tools(vector_db, reranker, k_fetch, k_final)
-    return create_agent(llm, tools, system_prompt=_SYSTEM_PROMPT)
+    return create_react_agent(llm, tools, prompt=_SYSTEM_PROMPT)
 
 
 # ---------------------------------------------------------------------------
