@@ -18,6 +18,7 @@ import {Icon} from "@iconify/react";
 import SidebarContainer from "./sidebar-with-chat-history";
 import MessagingChatMessage from "./messaging-chat-message";
 import PromptInputWithEnclosedActions from "./prompt-input-with-enclosed-actions";
+import {ThemeSwitch} from "./theme-switch";
 import * as api from "../lib/api";
 
 // ---------------------------------------------------------------------------
@@ -334,6 +335,9 @@ export default function App() {
   const handleSend = useCallback(async (message: string) => {
     if (isAsking) return;
 
+    // Detach from any demo conversation as soon as the user types their own message
+    setActiveConvId(null);
+
     const userMsg: ChatMsg = {id: crypto.randomUUID(), role: "user", content: message};
     const loadingMsg: ChatMsg = {id: "loading", role: "assistant", content: "", isLoading: true};
 
@@ -401,32 +405,35 @@ export default function App() {
         activeConversationId={activeConvId}
         conversations={conversations}
         header={
-          <Dropdown className="bg-content1">
-            <DropdownTrigger>
-              <Button
-                className="min-w-[120px] text-default-400"
-                endContent={
-                  <Icon className="text-default-400" height={20} icon="solar:alt-arrow-down-linear" width={20} />
-                }
-                variant="light"
-              >
-                Inductify
-              </Button>
-            </DropdownTrigger>
-            <DropdownMenu aria-label="Options" className="px-0 py-[16px]" variant="faded">
-              <DropdownSection title="Actions">
-                <DropdownItem
-                  key="new-chat"
-                  className="text-default-500 data-[hover=true]:text-default-500"
-                  description="Clear history and start fresh"
-                  startContent={<Icon className="text-default-400" icon="solar:chat-round-dots-linear" width={20} />}
-                  onPress={handleNewChat}
+          <div className="flex items-center gap-1">
+            <Dropdown className="bg-content1">
+              <DropdownTrigger>
+                <Button
+                  className="min-w-[120px] text-default-400"
+                  endContent={
+                    <Icon className="text-default-400" height={20} icon="solar:alt-arrow-down-linear" width={20} />
+                  }
+                  variant="light"
                 >
-                  New Chat
-                </DropdownItem>
-              </DropdownSection>
-            </DropdownMenu>
-          </Dropdown>
+                  Inductify
+                </Button>
+              </DropdownTrigger>
+              <DropdownMenu aria-label="Options" className="px-0 py-[16px]" variant="faded">
+                <DropdownSection title="Actions">
+                  <DropdownItem
+                    key="new-chat"
+                    className="text-default-500 data-[hover=true]:text-default-500"
+                    description="Clear history and start fresh"
+                    startContent={<Icon className="text-default-400" icon="solar:chat-round-dots-linear" width={20} />}
+                    onPress={handleNewChat}
+                  >
+                    New Chat
+                  </DropdownItem>
+                </DropdownSection>
+              </DropdownMenu>
+            </Dropdown>
+            <ThemeSwitch />
+          </div>
         }
         subTitle="RAG-powered onboarding"
         title="Inductify Assistant"

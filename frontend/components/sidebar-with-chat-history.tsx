@@ -7,9 +7,6 @@ import {
   Avatar,
   Button,
   ScrollShadow,
-  Listbox,
-  ListboxItem,
-  ListboxSection,
   Spacer,
   useDisclosure,
   Dropdown,
@@ -254,31 +251,26 @@ export default function Component({
         </Button>
 
         {conversations.length > 0 && (
-          <Listbox
-            aria-label="Recent chats"
-            selectedKeys={activeConversationId ? new Set([activeConversationId]) : new Set()}
-            selectionMode="single"
-            variant="flat"
-            onAction={(key) => onSelectConversation?.(key as string)}
-          >
-            <ListboxSection
-              classNames={{
-                base: "py-0",
-                heading: "py-0 pl-[10px] text-small text-default-400",
-              }}
-              title="Recent"
-            >
-              {conversations.map((conv) => (
-                <ListboxItem
-                  key={conv.id}
-                  className="group h-[44px] px-[12px] py-[10px] text-default-500"
-                  endContent={<RecentPromptDropdown />}
-                >
-                  {conv.title}
-                </ListboxItem>
-              )) as any}
-            </ListboxSection>
-          </Listbox>
+          <div className="flex flex-col">
+            <p className="pb-1 pl-[10px] text-small text-default-400">Recent</p>
+            {conversations.map((conv) => (
+              <button
+                key={conv.id}
+                className={cn(
+                  "group flex h-[44px] w-full items-center justify-between rounded-medium px-[12px] py-[10px] text-left text-small text-default-500 transition-colors hover:bg-default-100",
+                  activeConversationId === conv.id && "bg-default-200 text-foreground",
+                )}
+                type="button"
+                onClick={() => onSelectConversation?.(conv.id)}
+              >
+                <span className="truncate">{conv.title}</span>
+                {/* stop click bubbling so the 3-dot menu doesn't also load the conversation */}
+                <span onClick={(e) => e.stopPropagation()}>
+                  <RecentPromptDropdown />
+                </span>
+              </button>
+            ))}
+          </div>
         )}
       </ScrollShadow>
 
