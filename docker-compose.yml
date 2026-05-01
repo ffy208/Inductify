@@ -3,10 +3,15 @@ services:
     build:
       context: .
       dockerfile: backend/Dockerfile
+      args:
+        # Set to "true" to install CrossEncoder reranker (adds ~2.5 GB to image)
+        INSTALL_RERANKER: ${INSTALL_RERANKER:-false}
     ports:
       - "8000:8000"
     environment:
       - OPENAI_API_KEY=${OPENAI_API_KEY}
+      # Set to 1 to disable reranker at runtime (no effect on image size)
+      - DISABLE_RERANKER=${DISABLE_RERANKER:-}
     volumes:
       - ./backend/database/vector_db:/app/backend/database/vector_db
       - ./backend/database/input_db:/app/backend/database/input_db

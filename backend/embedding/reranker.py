@@ -35,7 +35,13 @@ class Reranker:
 
     def _load(self) -> None:
         if self._model is None:
-            from sentence_transformers import CrossEncoder
+            try:
+                from sentence_transformers import CrossEncoder
+            except ImportError as e:
+                raise RuntimeError(
+                    "sentence-transformers is not installed. "
+                    "Rebuild with INSTALL_RERANKER=true or set DISABLE_RERANKER=1 to skip reranking."
+                ) from e
             self._model = CrossEncoder(self._model_name)
 
     def rerank(
