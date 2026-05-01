@@ -8,8 +8,8 @@ services:
     environment:
       - OPENAI_API_KEY=${OPENAI_API_KEY}
     volumes:
-      - ./backend/database/vector_db:/app/database/vector_db
-      - ./backend/database/input_db:/app/database/input_db
+      - ./backend/database/vector_db:/app/backend/database/vector_db
+      - ./backend/database/input_db:/app/backend/database/input_db
     healthcheck:
       test: ["CMD-SHELL", "python -c \"import urllib.request; urllib.request.urlopen('http://localhost:8000/health')\""]
       interval: 10s
