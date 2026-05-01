@@ -325,12 +325,22 @@ export default function App() {
   }, [messages]);
 
   const handleSelectConversation = useCallback((id: string) => {
+    // Auto-save the current unsaved conversation before switching away
+    const userMsgs = messages.filter((m) => m.role === "user");
+    if (userMsgs.length > 0 && activeConvId === null) {
+      const title = userMsgs[0].content.slice(0, 42) + (userMsgs[0].content.length > 42 ? "…" : "");
+      const sid = sessionId.current;
+      setConversations((prev) => {
+        if (prev.some((c) => c.id === sid)) return prev; // already saved
+        return [{id: sid, title, messages: [...messages]}, ...prev];
+      });
+    }
     const conv = conversations.find((c) => c.id === id);
     if (conv) {
       setMessages(conv.messages);
       setActiveConvId(id);
     }
-  }, [conversations]);
+  }, [messages, activeConvId, conversations]);
 
   const handleSend = useCallback(async (message: string) => {
     if (isAsking) return;
