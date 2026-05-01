@@ -157,9 +157,7 @@ export default function Component({
   const content = (
     <div className="relative flex h-full w-72 flex-1 flex-col p-6">
       <div className="flex items-center gap-2 px-2">
-        <div className="flex h-8 w-8 items-center justify-center rounded-full bg-foreground">
-          <InductifyIcon className="text-background" />
-        </div>
+        <img src="/LOGO2.png" alt="Inductify" className="h-8 w-8 rounded-full object-cover" />
         <span className="text-base font-bold uppercase leading-6 text-foreground">Inductify AI</span>
       </div>
 
