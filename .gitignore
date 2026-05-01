@@ -36,3 +36,4 @@ backend/database/input_db/*.xlsx
 # Misc
 gradio-env/
 .langchain.db
+.claude
