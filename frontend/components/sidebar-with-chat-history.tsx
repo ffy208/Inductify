@@ -21,6 +21,8 @@ import {
 } from "@heroui/react";
 import {Icon} from "@iconify/react";
 
+import type {Conversation} from "./app";
+
 import {InductifyIcon} from "./acme";
 import SidebarDrawer from "./sidebar-drawer";
 
@@ -145,12 +147,20 @@ export default function Component({
   title,
   subTitle,
   classNames = {},
+  conversations = [],
+  activeConversationId = null,
+  onSelectConversation,
+  onNewChat,
 }: {
   children?: React.ReactNode;
   header?: React.ReactNode;
   title?: string;
   subTitle?: string;
   classNames?: Record<string, string>;
+  conversations?: Conversation[];
+  activeConversationId?: string | null;
+  onSelectConversation?: (id: string) => void;
+  onNewChat?: () => void;
 }) {
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
 
@@ -238,85 +248,38 @@ export default function Component({
           startContent={
             <Icon className="text-default-50" icon="solar:chat-round-dots-linear" width={24} />
           }
+          onPress={onNewChat}
         >
           New Chat
         </Button>
 
-        <Listbox aria-label="Recent chats" variant="flat">
-          <ListboxSection
-            classNames={{
-              base: "py-0",
-              heading: "py-0 pl-[10px] text-small text-default-400",
-            }}
-            title="Recent"
+        {conversations.length > 0 && (
+          <Listbox
+            aria-label="Recent chats"
+            selectedKeys={activeConversationId ? new Set([activeConversationId]) : new Set()}
+            selectionMode="single"
+            variant="flat"
+            onAction={(key) => onSelectConversation?.(key as string)}
           >
-            <ListboxItem
-              key="financial-planning"
-              className="group h-[44px] px-[12px] py-[10px] text-default-500"
-              endContent={<RecentPromptDropdown />}
+            <ListboxSection
+              classNames={{
+                base: "py-0",
+                heading: "py-0 pl-[10px] text-small text-default-400",
+              }}
+              title="Recent"
             >
-              Financial Planning
-            </ListboxItem>
-            <ListboxItem
-              key="email-template"
-              className="h-[44px] px-[12px] py-[10px] text-default-500"
-              endContent={<RecentPromptDropdown />}
-            >
-              Email template
-            </ListboxItem>
-            <ListboxItem
-              key="react-19-example"
-              className="h-[44px] px-[12px] py-[10px] text-default-500"
-              endContent={<RecentPromptDropdown />}
-            >
-              React 19 examples
-            </ListboxItem>
-            <ListboxItem
-              key="custom-support-message"
-              className="h-[44px] px-[12px] py-[10px] text-default-500"
-              endContent={<RecentPromptDropdown />}
-            >
-              Custom support message
-            </ListboxItem>
-            <ListboxItem
-              key="resignation-letter"
-              className="h-[44px] px-[12px] py-[10px] text-default-500"
-              endContent={<RecentPromptDropdown />}
-            >
-              Resignation Letter
-            </ListboxItem>
-            <ListboxItem
-              key="design-test-review"
-              className="h-[44px] px-[12px] py-[10px] text-default-500"
-              endContent={<RecentPromptDropdown />}
-            >
-              Design test review
-            </ListboxItem>
-            <ListboxItem
-              key="design-system-modules"
-              className="h-[44px] px-[12px] py-[10px] text-default-500"
-              endContent={<RecentPromptDropdown />}
-            >
-              Design systems modules
-            </ListboxItem>
-            <ListboxItem
-              key="how-a-taximeter-works"
-              className="h-[44px] px-[12px] py-[10px] text-default-500"
-              endContent={<RecentPromptDropdown />}
-            >
-              How a taximeter works
-            </ListboxItem>
-            <ListboxItem
-              key="show-more"
-              className="h-[44px] px-[12px] py-[10px] text-default-400"
-              endContent={
-                <Icon className="text-default-300" icon="solar:alt-arrow-down-linear" width={20} />
-              }
-            >
-              Show more
-            </ListboxItem>
-          </ListboxSection>
-        </Listbox>
+              {conversations.map((conv) => (
+                <ListboxItem
+                  key={conv.id}
+                  className="group h-[44px] px-[12px] py-[10px] text-default-500"
+                  endContent={<RecentPromptDropdown />}
+                >
+                  {conv.title}
+                </ListboxItem>
+              )) as any}
+            </ListboxSection>
+          </Listbox>
+        )}
       </ScrollShadow>
 
       <Spacer y={8} />
