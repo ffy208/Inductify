@@ -10,8 +10,9 @@ services:
       - "8000:8000"
     environment:
       - OPENAI_API_KEY=${OPENAI_API_KEY}
-      # Set to 1 to disable reranker at runtime (no effect on image size)
-      - DISABLE_RERANKER=${DISABLE_RERANKER:-}
+      # Defaults to 1 (disabled) because INSTALL_RERANKER defaults to false.
+      # Set DISABLE_RERANKER= (empty) in .env only when INSTALL_RERANKER=true was used.
+      - DISABLE_RERANKER=${DISABLE_RERANKER:-1}
     volumes:
       - ./backend/database/vector_db:/app/backend/database/vector_db
       - ./backend/database/input_db:/app/backend/database/input_db
