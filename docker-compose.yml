@@ -55,6 +55,7 @@ services:
       - POLICY_ONLY=${POLICY_ONLY:-1}
     volumes:
       - ./backend/database/vector_db:/app/backend/database/vector_db
+      - ./backend/database/input_db:/app/backend/database/input_db
       - ./data/synthetic_docs:/app/data/synthetic_docs:ro
     command: python /app/backend/scripts/index_demo_data.py
     restart: "no"
