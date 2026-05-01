@@ -6,8 +6,6 @@ from typing import Literal, Optional
 
 from fastapi import BackgroundTasks, Depends, FastAPI, HTTPException, Request, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
-from langchain_core.globals import set_llm_cache
-from langchain_community.cache import SQLiteCache
 from pydantic import BaseModel
 from slowapi import _rate_limit_exceeded_handler
 from slowapi.errors import RateLimitExceeded
@@ -40,8 +38,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*", "X-API-Key"],
 )
-
-set_llm_cache(SQLiteCache(database_path=".langchain.db"))
 
 db_manager = DatabaseManager(embedding=EMBEDDING_PROVIDER)
 vector_db = db_manager.get_db()
